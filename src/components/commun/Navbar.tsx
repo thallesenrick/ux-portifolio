@@ -25,7 +25,7 @@ export default function Navbar() {
             <li>
               <Link
                 className={`hover:text-cyan-500 transition ${
-                  location.pathname === "/" ? "text-cyan-500" : ""
+                  location.pathname === "/" ? "px-6 py-2 rounded-full bg-sky-100/50 text-cyan-500 dark:bg-amber-100/20 dark:text-amber-500" : ""
                 }`}
                 to="/"
               >

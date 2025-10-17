@@ -35,9 +35,7 @@ html {
 }
 
 /* subtle float for hero image or shapes */
-.hero-shape {
-  filter: drop-shadow(0 10px 30px rgba(2,6,23,0.45));
-}
+
 
 /* animations */
 @keyframes float {

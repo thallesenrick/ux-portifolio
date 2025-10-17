@@ -9,9 +9,12 @@ import Contact from "./pages/Contact";
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white text-slate-100 dark:bg-slate-900 transition-colors">
-        <Navbar />
-        <main className="pt-20">
+      <div className="min-h-screen bg-white text-slate-100 dark:bg-slate-900 transition-colors relative">
+        <div className="absolute top-0 right-0">
+         <Navbar />
+        </div>
+    
+        <main className="pt-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

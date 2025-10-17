@@ -2,44 +2,44 @@
 import { useI18n } from "../../lib/i18n";
 
 export default function Hero() {
-  const { t } = useI18n();
+    const { t } = useI18n();
 
-  return (
-    <section className="pt-28 transition-colors duration-300 bg-white dark:bg-neutral-900">
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div className="relative">
-          <div className="bg-gradient-to-br from-cyan-600 to-blue-700 dark:from-red-900 dark:to-orange-800 rounded-2xl p-12 text-white shadow-xl">
-            <p className="text-sm uppercase mb-3 opacity-80">{t.welcome}</p>
-            <h1 className="text-4xl md:text-5xl font-extrabold whitespace-pre-line leading-tight">
-              {t.homeTitle}
-            </h1>
-            <p className="mt-4 text-slate-100 dark:text-slate-200 max-w-xl">
-              {t.homeSubtitle}
-            </p>
+    return (
+        <section className="px-10 pt-20">
+            <div className="overflow-hidden  grid grid-cols-1 lg:grid-cols-3 items-center relative">
+                
+                <div className="absolute -bottom-14 -left-14 z-40 ">
+                    <div className="w-60 h-60 bg-transparent z-50 rounded-full border-white dark:border-neutral-900 border-[60px] transition-colors  duration-300">
 
-            <div className="mt-8 flex gap-4">
-              <a
-                href="#"
-                className="px-6 py-3 rounded-full border border-white/40 hover:bg-white/10 text-white transition"
-              >
-                {t.btnCV}
-              </a>
-              <a
-                href="#"
-                className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-slate-100 transition"
-              >
-                {t.btnPortfolio}
-              </a>
+                    </div>
+                </div>
+                <div className="absolute bottom-14 left-20 z-50">
+                    <div className="flex space-x-2">
+                        <a href="" className="px-12 py-4 font-semibold rounded-xl bg-amber-600 border border-white/30 text-white inline-flex items-center gap-2 shadow-2xl">  {t.btnCV}</a>
+                        <a href="" className="px-12 py-4 font-semibold rounded-xl text-white inline-flex items-center gap-2">    {t.btnPortfolio}</a>
+
+                    </div>
+                </div>
+                <div className="absolute right-48 bottom-0 rounded-full bg-white h-[70px] w-96 z-40 rotate-[45deg]">
+
+                </div>
+                 <div className="absolute -right-40 top-40 rounded-full bg-white h-[70px] w-96 z-40 rotate-[45deg]">
+
+                </div>
+                <div className=" relative col-span-3">
+                    <div className="bg-gradient-to-br from-neutral-600 to-neutral-700 dark:from-amber-700 dark:to-amber-600 rounded-[30px] p-12 text-white hero-shape w-full h-[600px]">
+                        <p className="text-sm uppercase mb-3 opacity-80">{t.homeSubtitle}</p>
+                        <h1 className="text-4xl md:text-5xl font-extrabold whitespace-pre-line leading-tight">
+                            {t.homeTitle}
+                        </h1>
+                        <p className="mt-4 text-slate-200 max-w-xl">{t.homeSubtitle}</p>
+
+
+                    </div>
+                </div>
+
+
             </div>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center">
-          <div className="w-64 h-64 bg-gray-100 dark:bg-white/5 rounded-2xl flex items-center justify-center text-slate-500 dark:text-slate-300 shadow-inner">
-            <span className="text-sm">Imagem / Mockup</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }
