@@ -6,6 +6,8 @@ import { useI18n } from "../../lib/i18n";
 // import Dither from '../Dither';
 // import GridDistortion from '../GridDistortion';
  import Squares from '../Squares';
+ import { MdOutlineFileDownload } from "react-icons/md";
+
 
 
 export default function Hero() {
@@ -26,10 +28,10 @@ export default function Hero() {
 
 
         <div className="absolute top-[200px] left-24 z-40 text-white">
-          <h1 className="text-4xl md:text-6xl font-extrabold whitespace-pre-line leading-tight z-40">
+          <h1 className="text-4xl md:text-5xl font-extrabold whitespace-pre-line leading-tight z-40">
             {t.homeTitle}
           </h1>
-          <p className="mt-4 text-slate-200 text-lg max-w-sm">{t.homeSubtitle}</p>
+          <p className="mt-4 text-slate-200 text-lg max-w-xl">{t.homeSubtitle}</p>
         </div>
 
         <div className="absolute bottom-[220px] right-[300px] z-50">
@@ -47,12 +49,15 @@ export default function Hero() {
               href="#"
               className="px-12 py-4 font-semibold rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 dark:bg-gradient-to-r dark:from-blue-500 dark:to-purple-600 transition-colors duration-300 text-white inline-flex items-center gap-2 shadow-2xl"
             >
+                <MdOutlineFileDownload className="text-2xl"/>
+
               {t.btnCV}
             </a>
             <a
               href="#"
               className="px-8 py-4 font-semibold rounded-xl text-white inline-flex items-center gap-2 border border-white bg-white/10"
             >
+                <MdOutlineFileDownload className="text-2xl"/>
               {t.btnPortfolio}
             </a>
           </div>
