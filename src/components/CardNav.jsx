@@ -1,4 +1,3 @@
-// src/components/CardNav.jsx
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
@@ -91,19 +90,16 @@ const CardNav = ({
     <div className={`card-nav-container ${className}`}>
       <nav
         ref={navRef}
-        className={`card-nav ${isExpanded ? "open" : ""} ${
-          theme === "dark" ? "dark" : ""
-        }`}
+        className={`card-nav ${isExpanded ? "open" : ""} ${theme === "dark" ? "dark" : ""}`}
         style={{
-          backgroundColor:
-            theme === "dark" ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.2)",
+          backgroundColor: theme === "dark" ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.2)",
           backdropFilter: "blur(2px)",
           borderBottom: "1px solid rgba(255,255,255,0.1)",
         }}
       >
         <div className="card-nav-top">
-          {/* LOGO AGORA À ESQUERDA */}
-          <div className="logo-container ml-5 -mt-0.5 bg-amber-500  dark:bg-gradient-to-r dark:from-blue-500 dark:to-purple-600 w-16 h-12 flex items-center justify-center rounded-xl">
+          {/* LOGO */}
+          <div className="logo-container ml-5 -mt-0.5 bg-amber-500 dark:bg-gradient-to-r dark:from-blue-500 dark:to-purple-600 w-16 h-12 flex items-center justify-center rounded-xl">
             <img src={logo} alt={logoAlt} className="logo" />
           </div>
 
@@ -139,7 +135,7 @@ const CardNav = ({
                 {t.navProjects}
               </Link>
             </li>
-             <li>
+            <li>
               <Link
                 to="/contact"
                 className={`hover:text-white transition ${
@@ -149,48 +145,41 @@ const CardNav = ({
                 {t.navContact}
               </Link>
             </li>
-        
           </ul>
 
           {/* CONTROLES + HAMBÚRGUER */}
           <div className="flex items-center gap-3 w-10 absolute right-44">
-            {/* BANDEIRAS  */}
+            {/* BANDEIRAS */}
             <LanguageSelector />
-           
 
             {/* DARK/LIGHT MODE */}
-           <button
-      onClick={toggle}
-      className="relative !w-40 px-8 h-9  flex items-center rounded-lg p-1 transition-colors duration-300
-                 bg-white/0 dark:bg-gray-800 border border-white/40 hover:border-amber-500 dark:hover:border-blue-500"
-      aria-label="Alternar tema"
-    >
-  
-      <span
-        className={`absolute top-1 left-1 w-7 h-[27px] rounded-lg bg-gradient-to-br from-amber-300 to-amber-500 dark:bg-gradient-to-br dark:from-blue-400 dark:to-indigo-600
-                    shadow-md transform transition-transform duration-300
-                    ${theme === "dark" ? "translate-x-7" : "translate-x-0"}`}
-      />
+            <button
+              onClick={toggle}
+              className="relative !w-40 px-8 h-9 flex items-center rounded-lg p-1 transition-colors duration-300
+                         bg-white/0 dark:bg-gray-800 border border-white/40 hover:border-amber-500 dark:hover:border-blue-500"
+              aria-label="Alternar tema"
+            >
+              <span
+                className={`absolute top-1 left-1 w-7 h-[27px] rounded-lg bg-gradient-to-br from-amber-300 to-amber-500 dark:bg-gradient-to-br dark:from-blue-400 dark:to-indigo-600
+                        shadow-md transform transition-transform duration-300
+                        ${theme === "dark" ? "translate-x-7" : "translate-x-0"}`}
+              />
 
-      <Sun
-        size={14}
-        className={`absolute left-[10px] top-[10px] text-white transition-opacity duration-300 ${
-          theme === "dark" ? "opacity-100 text-white/50 hover:text-white/100" : "opacity-100"
-        }`}
-      />
-      <Moon
-        size={14}
-        className={`absolute right-[10px] top-[10px] text-white transition-opacity duration-300   ${
-          theme === "dark" ? "opacity-100" : "opacity-100 text-white/50 hover:text-white/100"
-        }`}
-      />
-    </button>
-    
+              <Sun
+                size={14}
+                className={`absolute left-[10px] top-[10px] text-white transition-opacity duration-300 ${
+                  theme === "dark" ? "opacity-100 text-white/50 hover:text-white/100" : "opacity-100"
+                }`}
+              />
+              <Moon
+                size={14}
+                className={`absolute right-[10px] top-[10px] text-white transition-opacity duration-300   ${
+                  theme === "dark" ? "opacity-100" : "opacity-100 text-white/50 hover:text-white/100"
+                }`}
+              />
+            </button>
 
-            {/* BOTÃO DE CONTATO 
-        
-
-            {/* HAMBÚRGUER FOI MOVIDO PRA CÁ */}
+            {/* HAMBÚRGUER */}
             <div
               className={`hamburger-menu ${isHamburgerOpen ? "open" : ""}`}
               onClick={toggleMenu}
@@ -209,10 +198,9 @@ const CardNav = ({
           {items.slice(0, 3).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="nav-card"
+              className={`nav-card transition-colors duration-300 ${theme === "dark" ? "bg-blue-500" : "bg-amber-500"}`}
               ref={setCardRef(idx)}
               style={{
-                backgroundColor: item.bgColor || "#fff",
                 color: item.textColor || "#000",
               }}
             >
