@@ -1,0 +1,7 @@
+.particle-vortex { position:absolute; inset:0; z-index:2; overflow:hidden; border-radius:inherit; pointer-events:none; opacity:0; transition:opacity .3s; }
+.particle-vortex.is-running { opacity:1; }
+.vortex-particle { position:absolute; top:0; left:0; color:var(--sc-bright); background:transparent; }
+.vortex-particle:nth-child(3n) { color:var(--sc-accent); }
+.vortex-particle svg { display:block; width:100%; height:100%; overflow:visible; fill:none; stroke:currentColor; stroke-width:1; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 2px color-mix(in srgb,var(--sc-bright) 22%,transparent)); }
+.vortex-particle--spark svg { filter:drop-shadow(0 0 3px color-mix(in srgb,var(--sc-bright) 45%,transparent)); }
+@media (prefers-reduced-motion:reduce) { .particle-vortex { transition:none; } }

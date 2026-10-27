@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Portf?lio de Thalles Enrick
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portf?lio desenvolvido com React, TypeScript, Vite e Tailwind CSS. Inclui p?ginas de in?cio, sobre, projetos e contato, com temas claro/escuro e idiomas portugu?s/ingl?s.
 
-Currently, two official plugins are available:
+## Desenvolvimento
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Requer Node.js 20.19+ ou 22.12+.
 
-## React Compiler
+- `npm ci`: instala as depend?ncias do lockfile.
+- `npm run dev`: inicia o servidor local; o terminal informa a porta dispon?vel.
+- `npm run build`: verifica os tipos e gera o site em `dist/`.
+- `npm run preview`: serve o build localmente.
+- `npm run lint`: verifica o c?digo com ESLint.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estrutura
 
-## Expanding the ESLint configuration
+- `src/pages`: p?ginas das rotas.
+- `src/components`: navega??o, anima??es e componentes das p?ginas.
+- `src/lib`: providers, contextos e tradu??es.
+- `src/assets`: imagens e SVGs importados pelo Vite.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O formul?rio de contato ? demonstrativo e n?o envia mensagens. Os links de download e os bot?es de cases ainda precisam de destinos reais.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Selected projects
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Six-project carousel with four compact queue cards in a 2x2 grid. The fifth queued project rotates into view on the next selection; the desktop carousel keeps a 400px height. Three additional concept projects are placeholders for real portfolio content. Each image plays for four seconds; after the gallery ends, the next project becomes featured. Selecting a queue card resets the timer. Pause, previous/next and photo controls are available. Playback pauses on hover, keyboard focus, hidden tabs and offscreen; reduced motion defaults to manual playback. Home sections alternate left/right entrance animations on scroll. Concept previews are labeled.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+React Bits source and license: src/components/react-bits/.

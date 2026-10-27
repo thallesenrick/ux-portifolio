@@ -1,5 +1,5 @@
 // src/components/commum/Footer.tsx
-import { useI18n } from "../../lib/i18n";
+import { useI18n } from "../../lib/i18n-context";
 
 export default function Footer() {
   const { t } = useI18n();
