@@ -7,9 +7,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import MusicPlayer from "./components/commun/MusicPlayer";
 
 const Playhub=lazy(()=>import("./pages/Playhub"));
 const Rachaqui=lazy(()=>import("./pages/Rachaqui"));
+const Oryon=lazy(()=>import("./pages/Oryon"));
+const OryonLegis=lazy(()=>import("./pages/OryonLegis"));
 
 export default function App() {
   return (
@@ -28,11 +31,14 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/playhub" element={<Playhub />} />
             <Route path="/projects/rachaqui" element={<Rachaqui />} />
+            <Route path="/projects/oryon" element={<Oryon />} />
+            <Route path="/projects/oryon-legis" element={<OryonLegis />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
           </Suspense>
         </main>
         <Footer />
+        <MusicPlayer />
       </div>
     </Router>
     </HeroAccentProvider>

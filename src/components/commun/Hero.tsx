@@ -9,7 +9,10 @@ import { useI18n } from "../../lib/i18n-context";
 import photo from "../../assets/hero-thalles-photo-extended.png";
 import drawing from "../../assets/hero-thalles-sketch-extended.png";
 import { useHeroAccent } from "../../lib/hero-accent-context";
+import { HERO_INK_IMPACT, sampleHeroIntro, vividColor } from "../../lib/hero-intro";
+import type { RGB } from "../../lib/hero-accent-context";
 import HeroPortrait from "./HeroPortrait";
+import HeroInkDrop from "./HeroInkDrop";
 import RGBControls from "./RGBControls";
 import "./Hero.css";
 
@@ -42,8 +45,13 @@ function RevealObject({ variant, boundary, heroRef }: { variant: "envelope" | "w
 export default function Hero() {
   const { lang } = useI18n();
   const { theme } = useTheme();
+  const {selected,rgb,setColor}=useHeroAccent();
+  const initialColor=useRef(rgb);
+  const introColors=useRef<RGB[]|null>(null);
+  const [introPhase,setIntroPhase]=useState("pending");
   const heroRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLSpanElement>(null);
   const [stageGeometry,setStageGeometry] = useState<{left:number;width:number} | null>(null);
   const pt=lang === "pt";
   const reduce=useReducedMotion();
@@ -51,26 +59,28 @@ export default function Hero() {
   const revealInput = useRef<HTMLInputElement>(null);
   const introAnimation = useRef<{stop:()=>void} | null>(null);
   const introInterrupted = useRef(false);
-  const stopIntro = () => { introInterrupted.current=true;introAnimation.current?.stop();introAnimation.current=null; };
+  const stopIntro = () => { setIntroPhase("interrupted");introInterrupted.current=true;introAnimation.current?.stop();introAnimation.current=null; };
   useEffect(()=>{
-    if(reduce)return;
     let cancelled=false;
-    // Wait for both portrait textures so the demonstration reveals loaded art.
+    if(!introColors.current){const hue=Math.random()*360;introColors.current=[initialColor.current,vividColor(hue+120),vividColor(hue+240),vividColor(hue)];}
+    const colors=introColors.current;
     const ready=[photo,drawing].map(src=>{const image=new Image();image.src=src;return image.decode();});
     void Promise.allSettled(ready).then(()=>{
       if(cancelled || introInterrupted.current)return;
-      introAnimation.current=animate(53,[53,33,93,53],{
-        duration:3.4,delay:.75,times:[0,.28,.7,1],ease:[.45,0,.2,1],
-        onUpdate:value=>setReveal(value),
+      if(reduce){setColor(colors[3]);setIntroPhase("complete");return;}
+      setIntroPhase("running");
+      introAnimation.current=animate(0,1,{
+        duration:3.4,delay:HERO_INK_IMPACT,ease:"linear",
+        onUpdate:progress=>{const frame=sampleHeroIntro(progress,colors);setReveal(frame.reveal);setColor(frame.color);},
+        onComplete:()=>{setReveal(53);setColor(colors[3]);setIntroPhase("complete");introAnimation.current=null;},
       });
     });
     return()=>{cancelled=true;introAnimation.current?.stop();introAnimation.current=null;};
-  },[reduce]);
+  },[reduce,setColor]);
   const updateReveal = (event: PointerEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
     setReveal(Math.max(0, Math.min(100, (event.clientX - bounds.left) / bounds.width * 100)));
   };
-  const { selected }=useHeroAccent();
   useLayoutEffect(() => {
     const hero=heroRef.current,stage=stageRef.current;
     if(!hero || !stage)return;
@@ -79,22 +89,22 @@ export default function Hero() {
     return()=>{observer.disconnect();window.removeEventListener("resize",measure);};
   },[]);
   const boundary=stageGeometry ? stageGeometry.left+stageGeometry.width*reveal/100 : null;
-  const entrance = { initial: reduce ? false as const : {opacity:0,y:18}, animate:{opacity:1,y:0}, transition:{duration:reduce ? 0 : .8} };
-  return <section ref={heroRef} className="hero-section sketch-hero" aria-labelledby="sketch-hero-title" style={{"--sketch-accent":selected.color,"--drawing-filter":"grayscale(1) contrast(1.05)","--sketch-boundary":boundary===null ? "65%" : boundary+"px"} as CSSProperties}>
+  const copyEntrance={initial:reduce ? false as const : {opacity:0,y:26,rotate:-1.5,clipPath:"inset(100% -10% 0% -10%)"},animate:{opacity:1,y:0,rotate:0,clipPath:"inset(0% -10% -5% -10%)"},transition:{duration:reduce ? 0 : 1.05,delay:reduce ? 0 : .25,ease:[.22,1,.36,1] as const}};
+  const artEntrance={initial:reduce ? false as const : {opacity:0,clipPath:"circle(0% at 50% 45%)",filter:"blur(5px)"},animate:{opacity:1,clipPath:"circle(160% at 50% 45%)",filter:"blur(0px)"},transition:{duration:reduce ? 0 : 1.4,delay:reduce ? 0 : .15,ease:[.22,1,.36,1] as const}};
+  return <section ref={heroRef} className="hero-section sketch-hero" data-intro-state={introPhase} aria-labelledby="sketch-hero-title" style={{"--sketch-accent":selected.color,"--drawing-filter":"grayscale(1) contrast(1.05)","--sketch-boundary":boundary===null ? "65%" : boundary+"px"} as CSSProperties}>
+    {!reduce && introPhase==="running" && <HeroInkDrop heroRef={heroRef} impactRef={impactRef} />}
     <div className="sketch-grid-clip" aria-hidden="true"><div className="sketch-paper"><ShapeGrid shape="square" cellSize={19} lineWidth={.65} direction="diagonal" speed={.18} lineColor={theme === "dark" ? "#71717a" : "#b5b5ae"} hoverColor={selected.color} hoverFillColor={selected.color} fillOpacity={.06} glow={0} trail={.25} fade={0} radius={0} clickCascade={false} intro={false} paused={Boolean(reduce)} /></div></div>
     <svg className="sketch-burst" viewBox="0 0 130 110" fill="none" aria-hidden="true"><path d="M15 92L25 53L3 39L42 42L39 5L61 36L76 9L75 44L121 25L93 61L126 84L82 80L80 107L59 82L34 103L41 76Z" /></svg>
     <span className="sketch-margin-note" aria-hidden="true">01 / EXPLORATION<br />THALLES ENRICK</span>
     <div className="sketch-hero-content">
-      <motion.div {...entrance} className="sketch-hero-copy">
+      <motion.div {...copyEntrance} className="sketch-hero-copy">
         <p className="sketch-eyebrow">UX / UI DESIGNER & FRONT-END</p>
         <h1 id="sketch-hero-title">{pt ? "Desenhando" : "Designing"}<br />{pt ? "experiências," : "experiences,"}<em>{pt ? "além de telas." : "beyond screens."}</em></h1>
         <p className="sketch-description">{pt ? "Eu sou Thalles Enrick. Conecto pesquisa, design e código para criar experiências que fazem sentido para quem usa." : "I'm Thalles Enrick. I connect research, design and code to create experiences that make sense to the people using them."}</p>
-        <div className="sketch-copy-lines" aria-hidden="true"><span /><span /><span /></div>
         <Link to="/projects" className="sketch-cta">{pt ? "Explore meu mundo" : "Explore my world"}<ArrowUpRight size={21} strokeWidth={1.5} /></Link>
-        <div className="sketch-signature"><span>Thalles Enrick</span><small>{pt ? "Entre ideias e interfaces." : "Between ideas and interfaces."}</small></div>
       </motion.div>
 
-      <motion.div {...entrance} className="sketch-hero-art">
+      <motion.div {...artEntrance} className="sketch-hero-art">
         <BrazilWatercolor color={selected.color} boundary={boundary} heroRef={heroRef} />
         <RevealObject variant="envelope" boundary={boundary} heroRef={heroRef} />
         <RevealObject variant="wireframe" boundary={boundary} heroRef={heroRef} />
@@ -109,10 +119,10 @@ export default function Hero() {
           <div className="sketch-reveal-guide" style={{left:reveal+"%"}} aria-hidden="true"><span className="sketch-reveal-label">{pt ? "Arraste para revelar" : "Drag to reveal"}</span><span className="sketch-reveal-handle"><ChevronsLeftRight size={23} strokeWidth={1.5} /></span><i /></div>
           <input ref={revealInput} className="sketch-reveal-input" type="range" min="0" max="100" value={reveal} onChange={(event)=>setReveal(Number(event.target.value))} aria-label={pt ? "Revelar fotografia e esboço" : "Reveal photo and sketch"} aria-valuetext={`${Math.round(reveal)}% ${pt ? "esboço" : "sketch"}`} />
         </div>
-        <RGBControls />
+        <div className="hero-controls-dock"><RGBControls onInteract={stopIntro} impactRef={impactRef} /><div id="hero-music-anchor" /></div>
       </motion.div>
     </div>
-    <div className="sketch-hero-bottom"><a href="#selected-projects-title"><span>{pt ? "Role para" : "Scroll to"}<br />{pt ? "descobrir" : "discover"}</span><Mouse size={25} strokeWidth={1.2} /><ArrowDown size={19} strokeWidth={1.2} /></a><span>IDEIA → RASCUNHO → EXPERIÊNCIA</span></div>
+    <div className="sketch-hero-bottom"><a href="#selected-projects-title"><span>{pt ? "Role para" : "Scroll to"}<br />{pt ? "descobrir" : "discover"}</span><Mouse size={25} strokeWidth={1.2} /><ArrowDown size={19} strokeWidth={1.2} /></a></div>
     <svg className="sketch-landscape" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M-10 12C32 110 111 85 160 83C219 80 226 90 273 108C324 130 354 75 414 94C461 109 492 92 547 110C617 133 650 99 714 118C760 131 815 106 875 115" /><path d="M-5 123L36 103L53 110L78 92L100 103L127 96L166 112L221 116L260 128L306 124L350 132" /></svg>
   </section>;
 }

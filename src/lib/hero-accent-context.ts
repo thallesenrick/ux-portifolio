@@ -7,7 +7,7 @@ export function rgbLuminance(rgb:RGB) {
   return channels[0]*.2126+channels[1]*.7152+channels[2]*.0722;
 }
 export function rgbHex(rgb:RGB) { return "#"+[rgb.r,rgb.g,rgb.b].map(value=>value.toString(16).padStart(2,"0")).join(""); }
-export const HeroAccentContext=createContext<{rgb:RGB;setChannel:(channel:RGBChannel,value:number)=>void}|null>(null);
+export const HeroAccentContext=createContext<{rgb:RGB;setChannel:(channel:RGBChannel,value:number)=>void;setColor:(rgb:RGB)=>void}|null>(null);
 export function useHeroAccent() {
   const value=useContext(HeroAccentContext);
   if(!value)throw new Error("useHeroAccent requires HeroAccentProvider");

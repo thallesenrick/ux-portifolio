@@ -5,7 +5,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTheme } from "../lib/theme-context";
 import { useI18n } from "../lib/i18n-context";
 import { projects } from "../data/projects";
-import ProjectPreview from "./commun/ProjectPreview";
+import ProjectCard from "./commun/ProjectCard";
 import LanguageSelector from "./ui/LanguageSelector";
 import { useHeroAccent } from "../lib/hero-accent-context";
 import "./CardNav.css";
@@ -19,8 +19,6 @@ export default function CardNav({ logo }: { logo: string }) {
   const reducedMotion = useReducedMotion();
   const [openAt, setOpenAt] = useState<string | null>(null);
   const open = openAt === location.key;
-  const [previewIndex,setPreviewIndex]=useState(0);
-  const preview=projects[previewIndex];
   const navRef = useRef<HTMLElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const close = () => setOpenAt(null);
@@ -60,15 +58,7 @@ export default function CardNav({ logo }: { logo: string }) {
           <div className="nav-panel-content">
             <div className="nav-mobile-links"><Link to="/" onClick={close}>{t.navHome}</Link><Link to="/about" onClick={close}>{t.navAbout}</Link><Link to="/contact" onClick={close}>{t.navContact}</Link></div>
             <div className="nav-panel-heading"><div><span>{pt ? "CADERNO DE PROJETOS" : "PROJECT SKETCHBOOK"} / {String(projects.length).padStart(2,"0")}</span><h2>{pt ? "Ideias em movimento." : "Ideas in motion."}</h2></div><Link to="/projects" onClick={close}>{pt ? "Explorar todos" : "Explore all"}<ArrowUpRight size={16} /></Link></div>
-            <div className="nav-notebook-layout">
-              <Link className="nav-featured-project" to={preview.detailPath || `/projects#${preview.id}`} onClick={close}>
-                <div className="nav-featured-art"><span className="nav-featured-note">{pt ? "um olhar mais perto" : "take a closer look"}</span><AnimatePresence initial={false}>{preview.image ? <motion.img key={preview.id} src={preview.image} alt="" initial={{opacity:0,scale:reducedMotion ? 1 : .98}} animate={{opacity:1,scale:1}} exit={{opacity:0}} transition={{duration:reducedMotion ? 0 : .25}} /> : <div className="nav-featured-fallback"><ProjectPreview tone={preview.tone} /></div>}</AnimatePresence><span className="nav-featured-corner"><ArrowUpRight size={21} strokeWidth={1.2} /></span></div>
-                <div className="nav-featured-caption"><div><span>{preview.category}</span><h3>{preview.title}</h3></div><span className="nav-featured-detail">{pt ? "Ver projeto" : "View project"}<ArrowUpRight size={15} /></span></div>
-              </Link>
-              <div className="nav-notebook-list"><p>{pt ? "Escolha uma ideia para explorar" : "Pick an idea to explore"}</p>{projects.map((project,index)=><Link key={project.id} className="nav-notebook-item" data-preview-active={previewIndex===index} to={project.detailPath || `/projects#${project.id}`} onClick={close} onPointerEnter={event=>{if(event.pointerType==="mouse")setPreviewIndex(index);}} onFocus={()=>setPreviewIndex(index)}>
-                <span className="nav-notebook-number" aria-hidden="true">{String(index+1).padStart(2,"0")}</span><span className="nav-notebook-thumbnail">{project.image ? <img src={project.image} alt="" loading="lazy" /> : <ProjectPreview tone={project.tone} />}</span><span className="nav-notebook-item-copy"><strong>{project.title}</strong><small>{project.category}</small></span><ArrowUpRight size={18} strokeWidth={1.2} aria-hidden="true" />
-              </Link>)}</div>
-            </div>
+            <div className="nav-sketch-project-grid">{projects.map((project,index)=><ProjectCard key={project.id} project={project} index={index} compact onNavigate={close} />)}</div>
             <div className="nav-panel-footer"><span>{pt ? "Pesquisa, design e código. Do início ao detalhe." : "Research, design and code. From start to detail."}</span><Link to="/contact" onClick={close}>{pt ? "Seu projeto pode ser o próximo" : "Your project could be next"}<ArrowUpRight size={14} /></Link></div>
           </div>
         </motion.div>}

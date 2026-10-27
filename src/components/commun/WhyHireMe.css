@@ -5,7 +5,6 @@
 .strengths-eyebrow { display:flex;align-items:center;gap:9px;font:11px Kalam,'Segoe Print',cursive;letter-spacing:.09em;color:var(--sc-accent); }
 .strengths-heading h2 { margin-top:16px;max-width:770px;font:700 clamp(30px,3.1vw,44px)/1.15 Kalam,'Segoe Print',cursive;letter-spacing:-.04em;text-transform:uppercase;rotate:-1deg; }
 .strengths-heading-line { width:clamp(180px,30vw,330px);height:12px;margin-top:5px;stroke:var(--sc-accent);stroke-width:1.5;opacity:.7; }
-.strengths-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px; }
 .strength-card-reveal { min-width:0;height:100%; }
 .strength-card { position:relative;isolation:isolate;display:flex;flex-direction:column;height:100%;padding:24px;background:var(--sc-surface);border:1px solid transparent;border-radius:5px 8px 4px 7px;box-shadow:3px 4px 0 color-mix(in srgb,var(--sc-ink) 4%,transparent);transition:background .25s; }
 .strength-card.is-active { background:var(--sc-soft); }
@@ -25,6 +24,14 @@
 .strengths-note { display:flex;align-items:flex-start;gap:10px;margin-top:25px;padding-top:15px;border-top:1px dashed var(--sc-border);font:13px/1.7 Kalam,cursive;color:var(--sc-muted); }
 .strengths-note > span { flex-shrink:0;margin-top:6px;width:6px;height:6px;border:1px solid var(--sc-accent);border-radius:2px;rotate:-8deg; }
 .strength-card:focus-visible { outline:2px dashed var(--sc-accent);outline-offset:5px; }
-@media(max-width:1050px) { .strengths-grid { gap:16px; }.strength-card { padding:21px 18px; }.strength-card-copy h3 { font-size:23px; }.strength-art { height:140px;margin:12px 0 17px; }.strength-drawing { height:135px; } }
-@media(max-width:767px) { .strengths-section { margin:60px auto; }.strengths-grid { grid-template-columns:1fr;gap:20px; }.strength-card { padding:24px; }.strength-art { height:135px;margin:8px 0 15px; }.strength-card-copy h3 { font-size:26px; }.strengths-heading h2 { font-size:clamp(28px,7.4vw,38px); }.strength-description { max-width:500px; }.strengths-section::before { inset:-15px -10px; } }
+@media(max-width:1050px) { .strength-card { padding:21px 18px; }.strength-card-copy h3 { font-size:23px; }.strength-art { height:140px;margin:12px 0 17px; }.strength-drawing { height:135px; } }
+@media(max-width:767px) { .strengths-section { margin:60px auto; }.strength-card { padding:24px; }.strength-art { height:135px;margin:8px 0 15px; }.strength-card-copy h3 { font-size:26px; }.strengths-heading h2 { font-size:clamp(28px,7.4vw,38px); }.strength-description { max-width:500px; }.strengths-section::before { inset:-15px -10px; } }
 @media(prefers-reduced-motion:reduce) { .strengths-section * { animation:none!important;transition:none!important; } }
+.strength-card.is-active .strength-drawing--design circle { transform-box:fill-box;transform-origin:center;animation:strength-node 2.2s ease-in-out infinite alternate; }.strength-card.is-active .strength-drawing--design circle:nth-child(3n) { animation-delay:-1.2s; }.strength-card.is-active .strength-drawing-guide { animation:strength-dash 3s linear infinite; }.strength-card.is-active .strength-drawing--code .strength-drawing-fill { transform-box:fill-box;transform-origin:center;animation:strength-panel 2.8s ease-in-out infinite alternate; }.strength-card.is-active .strength-drawing--code .strength-drawing-fill:last-child { animation-delay:-1.4s; }.strength-card.is-active .strength-drawing--process .strength-drawing-fill { transform-box:fill-box;transform-origin:center;animation:strength-liquid 3.5s ease-in-out infinite; }
+@keyframes strength-node { from { transform:translate(-3px,2px) scale(.92); } to { transform:translate(4px,-3px) scale(1.15); } }
+@keyframes strength-dash { to { stroke-dashoffset:-32; } }
+@keyframes strength-panel { from { transform:perspective(350px) rotateY(-16deg) rotateX(8deg); } to { transform:perspective(350px) rotateY(18deg) rotateX(-9deg) translateY(-3px); } }
+@keyframes strength-liquid { 0%,100% { transform:scale(1) rotate(0); } 40% { transform:scale(1.15,.91) rotate(12deg); } 75% { transform:scale(.94,1.1) rotate(-8deg); } }
+
+.strengths-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px; }
+@media(max-width:767px) { .strengths-grid { grid-template-columns:1fr;gap:20px; } }

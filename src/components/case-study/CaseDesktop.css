@@ -1,0 +1,7 @@
+.case-desktop { min-width:0;overflow:hidden;border:1px solid #ffffff30;border-radius:12px;background:#e7edeb;box-shadow:0 25px 70px var(--ph-shadow,#0002); }
+.case-desktop-toolbar { height:34px;display:flex;align-items:center;gap:13px;padding:0 11px;background:#eef2f0;color:#4a5c55; }
+.case-desktop-toolbar > span:nth-child(2) { overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px; }
+.case-desktop-dots { display:flex;gap:4px;flex-shrink:0; }.case-desktop-dots i { width:6px;height:6px;border-radius:50%;background:#bdc9c3; }
+.case-desktop-toolbar button { margin-left:auto;flex-shrink:0;display:grid;place-items:center;width:25px;height:25px;border-radius:5px;cursor:zoom-in; }.case-desktop-toolbar button:hover { background:#d8e4de; }
+.case-desktop-viewport { width:100%;aspect-ratio:1.65;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#7b9f95 #e5eeea; }
+.case-desktop-viewport img { display:block;width:100%;height:auto; }

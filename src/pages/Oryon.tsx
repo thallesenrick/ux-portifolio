@@ -1,0 +1,133 @@
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
+import { motion, useInView, useReducedMotion, useScroll } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronRight, CircleDot, Expand, Layers3, MapPin, Monitor, Network, Pause, Play, ShieldCheck, Smartphone, Users, Wrench } from "lucide-react";
+import { useI18n } from "../lib/i18n-context";
+import { CasePhone as Phone, CaseReveal as Reveal, CaseScreenViewer as ScreenViewer } from "../components/case-study/CaseMedia";
+import { CaseDesktop } from "../components/case-study/CaseDesktop";
+import type { CaseCopy, CaseScreen } from "../data/case-study";
+import { oryonApps, oryonFiles, oryonJourney, oryonModules, oryonProcess, oryonScreens, oryonWordmark } from "../data/oryon";
+import "./Playhub.css";
+import "./Oryon.css";
+
+type OpenScreen = (screen: CaseScreen) => void;
+type AppSelection = { role: number; screen: number };
+
+function Tabs({ items, active, onChange, label, prefix }: {
+  items: CaseCopy[]; active: number; onChange: (index: number) => void; label: string; prefix: string;
+}) {
+  const { lang } = useI18n();
+  const handleKey = (event: KeyboardEvent<HTMLDivElement>) => {
+    const keys = ["ArrowRight", "ArrowLeft", "Home", "End"];
+    if (!keys.includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === "Home" ? 0 : event.key === "End" ? items.length - 1 : (active + (event.key === "ArrowRight" ? 1 : -1) + items.length) % items.length;
+    onChange(next);
+    const button = event.currentTarget.querySelectorAll<HTMLButtonElement>("[role=tab]")[next];
+    button.focus();
+    button.scrollIntoView({ block: "nearest", inline: "nearest" });
+  };
+  return <div className="oy-tabs" role="tablist" aria-label={label} onKeyDown={handleKey}>
+    {items.map((item, index) => <button key={item.en} type="button" role="tab" id={prefix + "-tab-" + index} aria-controls={prefix + "-panel"} aria-selected={active === index} tabIndex={active === index ? 0 : -1} onClick={() => onChange(index)}><span>0{index + 1}</span>{item[lang]}</button>)}
+  </div>;
+}
+
+function ModuleExplorer({ onOpen }: { onOpen: OpenScreen }) {
+  const { lang } = useI18n(), pt = lang === "pt", reduce = useReducedMotion();
+  const [active, setActive] = useState(0);
+  const item = oryonModules[active];
+  return <section className="ph-section oy-modules" id="oy-erp">
+    <Reveal><div className="ph-section-heading"><div><span className="ph-kicker">02 / ERP WEB</span><h2>{pt ? "Complexidade por dentro." : "Complexity underneath."}<br /><em>{pt ? "Clareza por fora." : "Clarity on the surface."}</em></h2></div><p>{pt ? "Explore cinco frentes do ERP e as decisões que organizam cada uma. A prévia pode ser rolada para ver o restante da tela." : "Explore five ERP areas and the decisions organizing each one. Scroll the preview to see the rest of the screen."}</p></div></Reveal>
+    <Tabs items={oryonModules.map(module => module.label)} active={active} onChange={setActive} label={pt ? "Módulos do ERP" : "ERP modules"} prefix="oy-modules" />
+    <div className="oy-module-panel" id="oy-modules-panel" role="tabpanel" aria-labelledby={"oy-modules-tab-" + active} tabIndex={0}>
+      <div className="oy-module-description"><div><span className="oy-counter">0{active + 1} / 05</span><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p></div><div className="oy-decision"><Layers3 size={17} /><div><span>{pt ? "A DECISÃO DE DESIGN" : "THE DESIGN DECISION"}</span><p>{item.decision[lang]}</p></div></div></div>
+      <motion.div key={item.id} initial={reduce ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .3 }}><CaseDesktop screen={item.screen} onOpen={onOpen} /></motion.div>
+      <div className="oy-preview-footer"><div>{item.tags.map(tag => <span key={tag.en}>{tag[lang]}</span>)}</div><span><Expand size={12} />{pt ? "Amplie para explorar os detalhes" : "Enlarge to explore the details"}</span></div>
+    </div>
+    <div className="oy-more-modules"><span>{pt ? "A ARQUITETURA TAMBÉM INCLUI" : "THE ARCHITECTURE ALSO INCLUDES"}</span><p>{pt ? "Registros / Validações / Atendimentos / Frota / Eventos / Almoxarifado / Infraestrutura / Configurações" : "Records / Validations / Customer service / Fleet / Events / Inventory / Infrastructure / Settings"}</p></div>
+  </section>;
+}
+
+function ConnectedJourney({ onOpen }: { onOpen: OpenScreen }) {
+  const { lang } = useI18n(), pt = lang === "pt", reduce = useReducedMotion();
+  const [active, setActive] = useState(0), [playing, setPlaying] = useState(false), [hovered, setHovered] = useState(false), [hidden, setHidden] = useState(document.hidden);
+  const ref = useRef<HTMLElement>(null), visible = useInView(ref, { amount: .2 });
+  const running = playing && visible && !hovered && !hidden;
+  const item = oryonJourney[active], icons = [CalendarDays, CircleDot, Wrench, ShieldCheck, MapPin];
+  useEffect(() => { const handler = () => setHidden(document.hidden); document.addEventListener("visibilitychange", handler); return () => document.removeEventListener("visibilitychange", handler); }, []);
+  useEffect(() => { if (!running) return; const timer = setInterval(() => setActive(value => (value + 1) % oryonJourney.length), 4200); return () => clearInterval(timer); }, [running]);
+  const choose = (index: number) => { setActive(index); setPlaying(false); };
+  const open: OpenScreen = screen => { setPlaying(false); onOpen(screen); };
+  return <section ref={ref} className="ph-section oy-journey" id="oy-journey" onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(true); }} onPointerLeave={() => setHovered(false)} onPointerCancel={() => setHovered(false)}>
+    <div className="ph-section-heading"><div><span className="ph-kicker">03 / {pt ? "PONTOS QUE SE CONECTAM" : "CONNECTING THE DOTS"}</span><h2>{pt ? "Troca a interface." : "The interface changes."}<br /><em>{pt ? "A história continua." : "The story continues."}</em></h2></div><button className="ph-play-control" type="button" onClick={() => setPlaying(value => !value)} aria-pressed={playing} aria-label={playing ? (pt ? "Pausar jornada" : "Pause journey") : (pt ? "Reproduzir jornada" : "Play journey")}>{playing ? <Pause size={15} /> : <Play size={15} />}<span>{pt ? "Percorrer jornada" : "Play the journey"}</span></button></div>
+    <p className="oy-journey-intro">{pt ? "Um recorte do calendário da gestão ao acompanhamento do veículo, contado pelas telas de cada perfil." : "A journey from the management calendar to vehicle monitoring, told through each role's screens."}</p>
+    <div className="oy-flow-chart"><svg viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true"><path d="M100 24H900" /><motion.path className="oy-flow-progress" d="M100 24H900" initial={false} animate={{ pathLength: active / 4 }} transition={{ duration: reduce ? 0 : .6 }} /></svg>{oryonJourney.map((step, index) => { const Icon = icons[index]; return <button key={step.title.en} className={index <= active ? "is-reached" : ""} type="button" aria-pressed={active === index} onClick={() => choose(index)}><span className="oy-flow-node"><Icon size={20} strokeWidth={1.5} /></span><small>0{index + 1}</small><strong>{step.title[lang]}</strong></button>; })}</div>
+    <div className={"oy-journey-stage " + (item.desktop ? "oy-journey-stage--desktop" : "")}>
+      <div className="oy-journey-copy"><span className="ph-kicker">{item.role[lang]}</span><h3>{item.question[lang]}</h3><p>{item.body[lang]}</p><div className="oy-journey-reason"><span>{pt ? "POR QUE ISSO IMPORTA" : "WHY IT MATTERS"}</span><p>{item.reason[lang]}</p></div><div className="ph-flow-pagination"><button type="button" onClick={() => choose((active + 4) % 5)} aria-label={pt ? "Etapa anterior" : "Previous step"}><ArrowLeft size={16} /></button><span>0{active + 1} / 05</span><button type="button" onClick={() => choose((active + 1) % 5)} aria-label={pt ? "Próxima etapa" : "Next step"}><ArrowRight size={16} /></button></div></div>
+      <motion.div className="oy-journey-visual" key={active} initial={reduce ? false : { opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .35 }}>{item.desktop ? <CaseDesktop screen={item.screen} onOpen={open} /> : <Phone screen={item.screen} onOpen={open} />}<span>{item.screen.label[lang]}</span></motion.div>
+    </div>
+  </section>;
+}
+
+function ScrollPhone({ screen, onOpen }: { screen: CaseScreen; onOpen: OpenScreen }) {
+  const { lang } = useI18n();
+  return <div className="oy-scroll-phone"><div className="oy-scroll-phone-content" tabIndex={0} role="region" aria-label={lang === "pt" ? "Role o dashboard do consultor" : "Scroll the consultant dashboard"}><img src={screen.src} alt={screen.label[lang]} width={screen.width} height={screen.height} loading="lazy" /></div><span className="ph-phone-notch" aria-hidden="true" /><button type="button" onClick={() => onOpen(screen)} aria-label={(lang === "pt" ? "Ampliar tela: " : "Enlarge screen: ") + screen.label[lang]}><Expand size={15} /></button></div>;
+}
+
+function AppExplorer({ onOpen, selection, onSelect }: { onOpen: OpenScreen; selection: AppSelection; onSelect: (selection: AppSelection) => void }) {
+  const { lang } = useI18n(), pt = lang === "pt", reduce = useReducedMotion();
+  const app = oryonApps[selection.role], selected = app.screens[selection.screen];
+  return <section className="ph-section oy-apps" id="oy-apps" style={{ "--oy-role": app.color } as CSSProperties}>
+    <Reveal><div className="ph-section-heading"><div><span className="ph-kicker">04 / {pt ? "EXPERIÊNCIAS MÓVEIS" : "MOBILE EXPERIENCES"}</span><h2>{pt ? "Uma família de produtos." : "A family of products."}<br /><em>{pt ? "Cada pessoa no seu centro." : "Each person at its center."}</em></h2></div><p>{pt ? "O ERP não precisa caber inteiro no celular. Cada perfil recebe as ferramentas e o contexto da sua rotina." : "The entire ERP does not need to fit on a phone. Each role gets the tools and context for its routine."}</p></div></Reveal>
+    <Tabs items={oryonApps.map(item => item.name)} active={selection.role} onChange={role => onSelect({ role, screen: 0 })} label={pt ? "Perfis dos aplicativos" : "App roles"} prefix="oy-apps" />
+    <div className="oy-app-panel" id="oy-apps-panel" role="tabpanel" aria-labelledby={"oy-apps-tab-" + selection.role} tabIndex={0}>
+      <div className="oy-app-copy"><span className="oy-role-label"><span />{app.eyebrow[lang]}</span><h3>{app.title[lang]}</h3><p>{app.body[lang]}</p><div className="oy-app-features" role="group" aria-label={pt ? "Telas do aplicativo" : "App screens"}>{app.features.map((feature, index) => <button key={feature.en} type="button" aria-pressed={selection.screen === index} onClick={() => onSelect({ ...selection, screen: index })}><span>0{index + 1}</span>{feature[lang]}<ChevronRight size={15} /></button>)}</div><a href={app.url} target="_blank" rel="noopener noreferrer">{pt ? "Explorar no Figma" : "Explore in Figma"}<ArrowUpRight size={15} /></a></div>
+      <motion.div key={app.id + selection.screen} className={"oy-app-stage " + (app.id === "consultant" ? "oy-app-stage--single" : "")} initial={reduce ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .4 }}>
+        <div className="oy-app-aura" aria-hidden="true" />
+        {app.id === "consultant" ? <ScrollPhone screen={selected} onOpen={onOpen} /> : <><Phone screen={app.screens[(selection.screen + 1) % app.screens.length]} onOpen={onOpen} className="oy-app-phone--back" /><Phone screen={selected} onOpen={onOpen} className="oy-app-phone--front" /></>}
+        <span className="oy-app-screen-label">{app.id === "consultant" ? (pt ? "Role a tela para explorar o dashboard" : "Scroll the screen to explore the dashboard") : selected.label[lang]}</span>
+      </motion.div>
+    </div>
+  </section>;
+}
+
+export default function Oryon() {
+  const { lang } = useI18n(), pt = lang === "pt";
+  const [screen, setScreen] = useState<CaseScreen | null>(null);
+  const [appSelection, setAppSelection] = useState<AppSelection>({ role: 0, screen: 0 });
+  const { scrollYProgress } = useScroll();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); const previous = document.title; document.title = "Oryon System — Ecossistema de produtos | Thalles Enrick"; return () => { document.title = previous; }; }, []);
+  return <article className="playhub-case oryon-case">
+    <motion.div className="ph-reading-progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
+    <div className="ph-container">
+      <div className="ph-breadcrumb"><Link to="/projects"><ArrowLeft size={15} />{pt ? "Projetos" : "Projects"}</Link><span>/</span><span>Oryon System</span><a href={oryonFiles.erp} target="_blank" rel="noopener noreferrer">{pt ? "Arquivo no Figma" : "Figma file"}<ArrowUpRight size={14} /></a></div>
+      <header className="oy-hero">
+        <div className="oy-hero-grid" aria-hidden="true" />
+        <div className="oy-hero-copy"><span className="oy-hero-kicker"><span />ORYON SYSTEM / {pt ? "ECOSSISTEMA DE PRODUTOS" : "PRODUCT ECOSYSTEM"}</span><h1>{pt ? "Uma operação inteira." : "An entire operation."}<br /><em>{pt ? "Uma experiência conectada." : "One connected experience."}</em></h1><p>{pt ? "Da gestão à rua. Do rastreamento ao cliente. Um ecossistema de proteção veicular que conecta ERP, aplicativos e uma linguagem de design comum." : "From management to the field. From tracking to customers. A vehicle-protection ecosystem connecting an ERP, apps and a shared design language."}</p><a className="oy-hero-cta" href="#oy-ecosystem">{pt ? "Entre no ecossistema" : "Enter the ecosystem"}<ArrowDown size={14} /></a></div>
+        <Reveal className="oy-hero-stage"><div className="oy-hero-orbit" aria-hidden="true" /><CaseDesktop screen={oryonScreens.tracking} onOpen={setScreen} className="oy-hero-desktop" priority /><Phone screen={oryonScreens.service} onOpen={setScreen} className="oy-hero-phone--tech" priority /><Phone screen={oryonScreens.vehicle} onOpen={setScreen} className="oy-hero-phone--user" priority /><span className="oy-hero-product-tag"><Network size={14} />ERP + APPS + DESIGN SYSTEM</span></Reveal>
+        <div className="oy-hero-bottom"><img src={oryonWordmark} width="1563" height="625" alt="Oryon System" /><span>{pt ? "Uma marca. Diferentes pontos de contato." : "One brand. Different touchpoints."}</span><span>UX/UI · PRODUCT DESIGN</span></div>
+      </header>
+      <dl className="oy-project-meta"><div><dt>{pt ? "CONTEXTO" : "CONTEXT"}</dt><dd>{pt ? "Proteção e rastreamento" : "Protection and tracking"}</dd></div><div><dt>{pt ? "ABRANGÊNCIA" : "SCOPE"}</dt><dd>ERP Web + Apps</dd></div><div><dt>{pt ? "DISCIPLINAS" : "DISCIPLINES"}</dt><dd>UX/UI · Design System · {pt ? "Marca" : "Brand"}</dd></div><div><dt>DESIGN</dt><dd>Thalles Enrick</dd></div></dl>
+
+      <section className="ph-section oy-ecosystem" id="oy-ecosystem">
+        <Reveal><div className="ph-section-heading"><div><span className="ph-kicker">01 / {pt ? "PENSAR O SISTEMA" : "THINKING IN SYSTEMS"}</span><h2>{pt ? "O desafio não cabia" : "The challenge did not fit"}<br /><em>{pt ? "em uma única tela." : "on a single screen."}</em></h2></div><p>{pt ? "Quem gerencia precisa enxergar o todo. Quem está em campo precisa agir. Quem contrata precisa acompanhar. Desenhar esse ecossistema significa respeitar essas diferenças sem perder a conexão." : "Managers need the whole picture. Field teams need to act. Customers need to follow along. Designing this ecosystem means respecting these differences while keeping them connected."}</p></div></Reveal>
+        <div className="oy-perspectives">{[{ icon: Monitor, number: "01", name: pt ? "Gestão" : "Management", text: pt ? "Operação, indicadores e regras de negócio." : "Operations, metrics and business rules.", tag: "ERP WEB", href: "#oy-erp" }, { icon: Wrench, number: "02", name: pt ? "Campo" : "Field", text: pt ? "Agenda, serviço e equipamentos." : "Schedule, service and equipment.", tag: pt ? "APP TÉCNICO" : "TECHNICIAN APP", href: "#oy-apps" }, { icon: Smartphone, number: "03", name: pt ? "Cliente" : "Customer", text: pt ? "Veículo, faturas e contratos." : "Vehicle, invoices and contracts.", tag: pt ? "APP USUÁRIO" : "USER APP", href: "#oy-apps" }, { icon: Users, number: "04", name: pt ? "Comercial" : "Sales", text: pt ? "Uma perspectiva móvel para o consultor." : "A mobile perspective for consultants.", tag: pt ? "APP CONSULTOR" : "CONSULTANT APP", href: "#oy-apps" }].map(({ icon: Icon, ...item }, index) => <a href={item.href} key={item.number} onClick={() => { if (index > 0) setAppSelection({ role: index === 1 ? 1 : index === 2 ? 0 : 2, screen: 0 }); }}><div><Icon size={21} strokeWidth={1.4} /><span>{item.number}</span></div><h3>{item.name}</h3><p>{item.text}</p><span className="oy-perspective-tag">{item.tag}<ArrowDown size={13} /></span></a>)}</div>
+        <div className="oy-process-intro"><span className="ph-kicker">{pt ? "DA OPERAÇÃO À INTERFACE" : "FROM OPERATIONS TO INTERFACES"}</span><p>{pt ? "Quatro decisões que estruturam a apresentação deste trabalho." : "Four decisions structuring this project presentation."}</p></div><div className="oy-process-steps">{oryonProcess.map((step, index) => <div key={step.title.en}><span>0{index + 1}</span><h3>{step.title[lang]}</h3><p>{step.body[lang]}</p></div>)}</div>
+      </section>
+
+      <ModuleExplorer onOpen={setScreen} />
+      <ConnectedJourney onOpen={setScreen} />
+      <AppExplorer onOpen={setScreen} selection={appSelection} onSelect={setAppSelection} />
+
+      <section className="ph-section oy-system" id="oy-system"><Reveal><div className="ph-section-heading"><div><span className="ph-kicker">05 / {pt ? "A LINGUAGEM QUE SUSTENTA" : "THE LANGUAGE UNDERNEATH"}</span><h2>{pt ? "Diferentes produtos." : "Different products."}<br /><em>{pt ? "Um mesmo DNA." : "The same DNA."}</em></h2></div><p>{pt ? "A identidade aproxima os pontos de contato. A biblioteca de componentes organiza o que se repete: tabelas, campos, botões, navegação e estados." : "Identity brings touchpoints together. The component library organizes what repeats: tables, fields, buttons, navigation and states."}</p></div></Reveal>
+        <div className="oy-system-grid"><div className="oy-brand-card"><img src={oryonWordmark} width="1563" height="625" alt="Oryon System" /><span>{pt ? "IDENTIDADE APLICADA AO PRODUTO" : "IDENTITY APPLIED TO THE PRODUCT"}</span><p>{pt ? "A assinatura visual atravessa a gestão e os aplicativos. As cores de cada frente ajudam a diferenciar contextos dentro da mesma família." : "The visual signature crosses management and apps. Each area's colors help distinguish contexts within the same family."}</p><div className="oy-product-colors"><span><i style={{ background: "#1b4d4b" }} />ERP <code>#1B4D4B</code></span><span><i style={{ background: "#0d9488" }} />{pt ? "Usuário" : "User"}<code>#0D9488</code></span><span><i style={{ background: "#f97316" }} />{pt ? "Técnico" : "Technician"}<code>#F97316</code></span></div></div>
+        <div className="oy-foundations"><div className="oy-type-card"><span>{pt ? "TIPOGRAFIA DO PRODUTO" : "PRODUCT TYPOGRAPHY"}</span><strong>Montserrat</strong><p>{pt ? "Hierarquia de pesos para indicadores, formulários e leitura de dados." : "A hierarchy of weights for metrics, forms and data reading."}</p></div><div className="oy-status-card"><span>{pt ? "ESTADOS COM COR E TEXTO" : "STATES WITH COLOR AND TEXT"}</span><div><span><i />{pt ? "Aberto" : "Open"}</span><span><i />{pt ? "Em execução" : "In progress"}</span><span><Check size={11} />{pt ? "Finalizado" : "Completed"}</span></div><p>{pt ? "O significado precisa continuar legível além da cor." : "Meaning needs to stay readable beyond color."}</p></div><button type="button" className="oy-component-link" onClick={() => setScreen(oryonScreens.components)}><Layers3 size={19} /><span>{pt ? "Ver componentes e estados originais" : "View original components and states"}</span><Expand size={15} /></button></div></div>
+      </section>
+
+      <section className="ph-section ph-takeaways oy-takeaways"><div><span className="ph-kicker">06 / {pt ? "VISÃO DE PRODUTO" : "PRODUCT THINKING"}</span><h2>{pt ? "Mais do que somar telas." : "More than adding screens."}<br /><em>{pt ? "Desenhar relações." : "Designing relationships."}</em></h2><p>{pt ? "A força deste trabalho está na amplitude: pensar a operação, o contexto de cada perfil e uma base visual que permita evoluir o conjunto." : "This project's strength is its scope: thinking through operations, each role's context and a visual foundation that lets the whole ecosystem evolve."}</p></div><div className="ph-takeaway-list">{[{ icon: Network, title: pt ? "Arquitetura antes do detalhe" : "Architecture before detail", text: pt ? "As frentes precisam fazer sentido como sistema antes de cada interface funcionar isoladamente." : "The different areas need to make sense as a system before each interface can work on its own." }, { icon: Users, title: pt ? "Contexto define a experiência" : "Context defines the experience", text: pt ? "O celular do técnico, o painel do gestor e o app do cliente pedem prioridades diferentes." : "The technician's phone, the manager's dashboard and the customer's app call for different priorities." }, { icon: Layers3, title: pt ? "Consistência abre espaço para crescer" : "Consistency creates room to grow", text: pt ? "Uma biblioteca comum aproxima módulos e reduz a necessidade de reinventar padrões a cada nova frente." : "A shared library brings modules closer and reduces the need to reinvent patterns for each new area." }].map(({ icon: Icon, title, text }) => <div key={title}><Icon size={20} strokeWidth={1.4} /><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></section>
+      <div className="oy-source-files"><span>{pt ? "EXPLORE OS ARQUIVOS DO PROJETO" : "EXPLORE THE PROJECT FILES"}</span>{[{ label: "ERP Web", href: oryonFiles.erp }, { label: pt ? "App Técnico" : "Technician App", href: oryonFiles.technician }, { label: pt ? "App Usuário" : "User App", href: oryonFiles.user }].map(file => <a href={file.href} key={file.href} target="_blank" rel="noopener noreferrer">{file.label}<ArrowUpRight size={14} /></a>)}</div>
+      <footer className="ph-case-footer"><div><span className="ph-kicker">{pt ? "DO SEU DESAFIO À VISÃO DO TODO" : "FROM YOUR CHALLENGE TO THE BIG PICTURE"}</span><h2>{pt ? "Seu próximo produto" : "Your next product"}<br /><em>{pt ? "também pode se conectar." : "can connect, too."}</em></h2><Link to="/contact" className="ph-primary-button">{pt ? "Vamos conversar" : "Let's talk"}<ArrowUpRight size={16} /></Link></div><Link to="/projects/oryon-legis">{pt ? "Conheça o Oryon Legis" : "Explore Oryon Legis"}<ArrowRight size={17} /></Link></footer>
+    </div><ScreenViewer screen={screen} onClose={() => setScreen(null)} />
+  </article>;
+}

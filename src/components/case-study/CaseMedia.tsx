@@ -1,6 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Expand, X } from "lucide-react";
+import { ArrowUpRight, Expand, X } from "lucide-react";
 import { useI18n } from "../../lib/i18n-context";
 import type { CaseScreen } from "../../data/case-study";
 import "./CaseMedia.css";
@@ -17,5 +17,5 @@ export function CasePhone({screen,onOpen,className="",priority=false}:{screen:Ca
 export function CaseScreenViewer({screen,onClose}:{screen:CaseScreen|null;onClose:()=>void}) {
   const ref=useRef<HTMLDialogElement>(null);const {lang}=useI18n();
   useEffect(()=>{const dialog=ref.current;if(!dialog)return;if(screen && !dialog.open)dialog.showModal();else if(!screen && dialog.open)dialog.close();},[screen]);
-  return <dialog ref={ref} className="ph-screen-dialog" onCancel={onClose} onClose={onClose} onClick={event=>{if(event.target===event.currentTarget)onClose();}} aria-label={screen?.label[lang]}><div className="ph-screen-dialog-inner">{screen && <><div><span>{screen.label[lang]}</span><button type="button" onClick={onClose} aria-label={lang==="pt" ? "Fechar tela" : "Close screen"}><X size={20} /></button></div><img src={screen.src} alt={screen.label[lang]} /><p>{lang==="pt" ? "Tela original exportada do Figma." : "Original screen exported from Figma."}</p></>}</div></dialog>;
+  return <dialog ref={ref} className="ph-screen-dialog" onCancel={onClose} onClose={onClose} onClick={event=>{if(event.target===event.currentTarget)onClose();}} aria-label={screen?.label[lang]}><div className="ph-screen-dialog-inner">{screen && <><div><span>{screen.label[lang]}</span><button type="button" onClick={onClose} aria-label={lang==="pt" ? "Fechar tela" : "Close screen"}><X size={20} /></button></div><img src={screen.src} alt={screen.label[lang]} /><p>{lang==="pt" ? "Tela original exportada do Figma." : "Original screen exported from Figma."}</p><a className="ph-screen-original" href={screen.src} target="_blank" rel="noopener noreferrer">{lang==="pt" ? "Abrir imagem em tamanho original" : "Open image at original size"}<ArrowUpRight size={13} /></a></>}</div></dialog>;
 }

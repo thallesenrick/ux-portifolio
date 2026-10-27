@@ -1,0 +1,34 @@
+const {chromium}=require('../playhub-qa/node_modules/playwright-core'),assert=require('node:assert/strict'),fs=require('node:fs');
+(async()=>{
+  fs.mkdirSync('tmp/about-intro-qa/screenshots',{recursive:true});
+  const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+  const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'no-preference'});
+  await context.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
+  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('http://127.0.0.1:4176/',{waitUntil:'domcontentloaded'});
+  await page.locator('.sketch-hero[data-intro-state="running"]').waitFor();
+  await page.evaluate(()=>{window.introSamples=[];const sample=()=>{const hero=document.querySelector('.sketch-hero');window.introSamples.push({time:performance.now(),phase:hero.dataset.introState,reveal:Number(document.querySelector('.sketch-reveal-input').value),rgb:Array.from(document.querySelectorAll('.sketch-rgb-row input'),i=>Number(i.value))});if(hero.dataset.introState!=='complete')requestAnimationFrame(sample);};sample();});
+  await page.waitForTimeout(500);await page.screenshot({path:'tmp/about-intro-qa/screenshots/hero-opening.png'});
+  await page.locator('.sketch-hero[data-intro-state="complete"]').waitFor({timeout:15000});
+  const samples=await page.evaluate(()=>window.introSamples);assert(samples.length>30);
+  assert(Math.min(...samples.map(s=>s.reveal))<40);assert(Math.max(...samples.map(s=>s.reveal))>85);
+  for(let i=0;i<3;i++)assert(new Set(samples.map(s=>s.rgb[i])).size>5);
+  const read=()=>page.evaluate(()=>({reveal:Number(document.querySelector('.sketch-reveal-input').value),rgb:Array.from(document.querySelectorAll('.sketch-rgb-row input'),i=>Number(i.value)),hex:document.querySelector('.sketch-rgb-result > output').textContent}));
+  const final=await read();assert.equal(final.reveal,53);assert.equal(Math.min(...final.rgb),36);assert.equal(Math.max(...final.rgb),240);
+  assert.equal(final.hex,'#'+final.rgb.map(n=>n.toString(16).padStart(2,'0')).join('').toUpperCase());
+  await page.waitForTimeout(500);assert.deepEqual(await read(),final);await page.screenshot({path:'tmp/about-intro-qa/screenshots/hero-final.png'});
+  await page.goto('http://127.0.0.1:4176/',{waitUntil:'domcontentloaded'});await page.locator('.sketch-hero[data-intro-state="running"]').waitFor();
+  await page.getByRole('slider',{name:'Vermelho',exact:true}).focus();await page.keyboard.press('Home');assert.equal(await page.locator('.sketch-hero').getAttribute('data-intro-state'),'interrupted');
+  const interrupted=await read();await page.waitForTimeout(1300);assert.deepEqual(await read(),interrupted);assert.equal(interrupted.rgb[0],0);
+  await page.goto('http://127.0.0.1:4176/',{waitUntil:'domcontentloaded'});await page.locator('.sketch-hero[data-intro-state="running"]').waitFor();await page.locator('.sketch-reveal-input').focus();await page.keyboard.press('ArrowLeft');const portraitInterrupted=await read();await page.waitForTimeout(1000);assert.deepEqual(await read(),portraitInterrupted);
+  await page.goto('http://127.0.0.1:4176/about',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);await page.locator('.about-hero img').evaluate(img=>img.decode());await page.waitForTimeout(700);assert.equal(await page.locator('h1').count(),1);await page.screenshot({path:'tmp/about-intro-qa/screenshots/about-light.png'});
+  const focus=page.locator('.about-focus-controls button');for(let i=0;i<3;i++){await focus.nth(i).click();assert.equal(await focus.nth(i).getAttribute('aria-pressed'),'true');}assert.equal(await page.locator('.about-map-node').allTextContents().then(a=>a.join(',')),'React,Tailwind CSS,JavaScript,Responsividade');await page.locator('.about-section#about-focus').screenshot({path:'tmp/about-intro-qa/screenshots/focus-front.png'});
+  const moods=page.locator('.about-mood-tile');assert.equal(await moods.count(),4);for(let i=0;i<4;i++){await moods.nth(i).click();assert.equal(await moods.nth(i).getAttribute('aria-pressed'),'true');}await page.locator('.about-mood-section').screenshot({path:'tmp/about-intro-qa/screenshots/moodboard.png'});
+  const steps=page.locator('.about-process-flow > button');assert.equal(await steps.count(),5);for(let i=0;i<5;i++){await steps.nth(i).click();assert.equal(await steps.nth(i).getAttribute('aria-pressed'),'true');}await page.locator('.about-process').screenshot({path:'tmp/about-intro-qa/screenshots/process.png'});
+  const hobbies=await page.locator('.about-offscreen > div:last-child > span').allTextContents();assert.deepEqual(hobbies,['Tatuagem','Tocar instrumentos','Videogames','Cinema']);
+  await page.getByRole('combobox',{name:'Idioma'}).selectOption('en');assert((await page.locator('h1').textContent()).includes('Art'));assert.equal(await page.locator('.about-map-node').last().textContent(),'Responsive design');await page.getByRole('combobox',{name:'Language'}).selectOption('pt');
+  await page.getByRole('button',{name:'Alternar tema'}).click();await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));await page.waitForTimeout(450);await page.screenshot({path:'tmp/about-intro-qa/screenshots/about-dark.png'});
+  for(const width of [390,320]){await page.setViewportSize({width,height:844});await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));await page.waitForTimeout(350);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:`tmp/about-intro-qa/screenshots/about-mobile-${width}.png`});await page.locator('#about-focus').scrollIntoViewIfNeeded();await page.waitForTimeout(400);await page.locator('#about-focus').screenshot({path:`tmp/about-intro-qa/screenshots/focus-mobile-${width}.png`});await page.locator('.about-process').screenshot({path:`tmp/about-intro-qa/screenshots/process-mobile-${width}.png`});}
+  const reduced=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});const staticPage=await reduced.newPage();staticPage.on('pageerror',e=>errors.push(e.message));await staticPage.goto('http://127.0.0.1:4176/',{waitUntil:'networkidle'});await staticPage.locator('.sketch-hero[data-intro-state="complete"]').waitFor();assert.equal(await staticPage.locator('.sketch-reveal-input').inputValue(),'53');assert.equal(await staticPage.locator('.hero-opening-stroke').count(),0);assert(await staticPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  assert.deepEqual(errors,[]);console.log(JSON.stringify({synchronizedIntro:true,final,sharedInterruption:true,portraitInterruption:true,reducedMotion:true,focusAreas:3,moodboardTiles:4,processSteps:5,hobbies,englishPortuguese:true,mobile:[320,390],runtimeErrors:errors}));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});
