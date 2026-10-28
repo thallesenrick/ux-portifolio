@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Local configuration and new temporary QA artifacts
+.env
+.env.*
+!.env.example
+/tmp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

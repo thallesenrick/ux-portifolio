@@ -50,7 +50,7 @@ export default function CardNav({ logo }: { logo: string }) {
         </button>
         <div className="nav-controls">
           <LanguageSelector />
-          <button type="button" className="nav-theme" onClick={toggle} aria-label={pt ? "Alternar tema" : (lang === "es" ? spanish("Toggle theme") : "Toggle theme")}>{theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}</button>
+          <button type="button" className="nav-theme" onClick={event=>toggle(event.currentTarget)} aria-label={pt ? "Alternar tema" : (lang === "es" ? spanish("Toggle theme") : "Toggle theme")}>{theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}</button>
           <Link to="/contact" onClick={close} className="nav-contact">{pt ? "Vamos conversar" : (lang === "es" ? spanish("Let's talk") : "Let's talk")}<ArrowUpRight size={16} /></Link>
         </div>
       </div>

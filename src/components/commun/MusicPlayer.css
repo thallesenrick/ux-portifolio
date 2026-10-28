@@ -5,7 +5,7 @@
 .sketch-music-player.is-expanded { width:320px; }.music-player-panel { padding:13px; }.music-player-heading { display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px; }.music-player-heading > span { display:flex;align-items:center;gap:7px;font:9px Kalam,cursive;letter-spacing:.06em;color:var(--site-accent-text); }.music-player-heading button { display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--mp-line);border-radius:4px 6px 3px 5px;cursor:pointer; }
 .music-audio-backend { position:fixed;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);pointer-events:none; }
 .music-audio-backend iframe { width:200px;height:200px;border:0; }
-.music-track-info { display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px; }.music-track-info strong { display:block;font:700 18px/1.2 Kalam,cursive; }.music-track-info span { display:block;font:10px Kalam,cursive;color:var(--mp-muted);margin-top:4px; }.music-track-info a { display:grid;place-items:center;width:28px;height:28px;color:var(--site-accent-text);flex-shrink:0; }
+.music-track-info { display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px; }.music-track-info strong { display:block;font:700 18px/1.2 Kalam,cursive; }.music-track-info > div > span { display:block;font:10px Kalam,cursive;color:var(--mp-muted);margin-top:4px; }.music-track-info a { display:grid;place-items:center;width:28px;height:28px;color:var(--site-accent-text);flex-shrink:0; }
 .music-player-controls { display:flex;align-items:center;gap:14px;margin-top:13px; }.music-play-button { display:grid;place-items:center;flex-shrink:0;width:43px;height:43px;border:1.2px solid var(--site-accent-text);border-radius:46% 53% 44% 50%;background:color-mix(in srgb,var(--site-accent) 9%,var(--mp-paper));color:var(--site-accent-text);cursor:pointer; }.music-play-button:disabled { opacity:.6;cursor:wait; }.music-volume { display:flex;align-items:center;gap:8px;flex:1;min-width:0;color:var(--site-accent-text); }.music-volume > svg { flex-shrink:0; }.music-volume input { appearance:none;-webkit-appearance:none;min-width:0;width:100%;height:26px;cursor:ew-resize;background:transparent;touch-action:pan-y; }.music-volume input::-webkit-slider-runnable-track { height:5px;border:1px solid var(--mp-ink);border-radius:3px 5px 2px 4px;background:linear-gradient(to right,var(--site-accent) var(--music-volume),var(--mp-paper) var(--music-volume));rotate:-.7deg; }.music-volume input::-moz-range-track { height:4px;border:1px solid var(--mp-ink);border-radius:4px;background:var(--mp-paper); }.music-volume input::-moz-range-progress { background:var(--site-accent);height:4px; }.music-volume input::-webkit-slider-thumb { appearance:none;-webkit-appearance:none;width:15px;height:15px;margin-top:-6px;background:var(--mp-paper);border:1.3px solid var(--mp-ink);border-radius:44% 53% 47% 51%;box-shadow:1px 2px 0 #0002; }.music-volume input::-moz-range-thumb { width:13px;height:13px;background:var(--mp-paper);border:1.3px solid var(--mp-ink);border-radius:47%; }.music-volume output { flex-shrink:0;min-width:29px;text-align:right;font:10px Kalam,cursive;color:var(--mp-muted); }
 .music-player-status { display:flex;align-items:center;gap:7px;margin-top:12px;padding-top:9px;border-top:1px dashed var(--mp-line);color:var(--mp-muted);font:10px/1.5 Kalam,cursive;min-height:24px; }.music-equalizer { display:flex;align-items:center;gap:2px;height:12px;width:12px;flex-shrink:0;color:var(--site-accent-text); }.music-equalizer i { width:2px;height:4px;background:currentColor;border-radius:1px; }.music-equalizer i:nth-child(2) { height:9px; }.is-playing .music-equalizer i { animation:music-bar .9s ease-in-out infinite alternate; }.is-playing .music-equalizer i:nth-child(2) { animation-delay:-.4s; }.is-playing .music-equalizer i:nth-child(3) { animation-delay:-.7s; }.music-loading-icon { animation:music-loading 1.2s linear infinite; }
 .sketch-music-player :is(a,button,input):focus-visible { outline:2px dashed var(--site-accent-text);outline-offset:4px; }
@@ -47,14 +47,14 @@
 .music-artwork-bars i:nth-child(2n) { height:21px;animation-delay:-.3s; }
 .music-artwork-bars i:nth-child(3n) { height:16px;animation-delay:-.6s; }
 .is-playing .music-artwork-bars i { animation:music-bar .8s ease-in-out infinite alternate; }
-.music-skin--modern { border:1px solid color-mix(in srgb,var(--mp-ink) 12%,transparent);border-radius:16px;background:color-mix(in srgb,var(--mp-paper) 94%,var(--site-accent));box-shadow:0 6px 16px #0002,inset 0 1px 0 #fff5; }
+.music-skin--modern { align-self:start;border:1px solid color-mix(in srgb,var(--mp-ink) 12%,transparent);border-radius:16px;background:color-mix(in srgb,var(--mp-paper) 94%,var(--site-accent));box-shadow:0 6px 16px #0002,inset 0 1px 0 #fff5; }
 .music-skin--modern .music-sketch-border,.music-skin--modern .music-note,.music-skin--modern .music-record-arm { display:none; }
 .music-skin--modern :is(.music-open-button strong,.music-open-button small,.music-player-heading > span,.music-track-info strong,.music-track-info span,.music-volume output,.music-player-status,.music-artwork-caption) { font-family:Inter,ui-sans-serif,system-ui,sans-serif; }
 .music-skin--modern .music-open-button strong { font-size:11px;line-height:1.4;letter-spacing:-.02em; }
 .music-skin--modern .music-open-button small { font-size:9px; }
 .music-skin--modern .music-player-heading > span { font-size:8px;font-weight:600;letter-spacing:.04em; }
 .music-skin--modern .music-track-info strong { font-size:14px;line-height:1.4;letter-spacing:-.03em; }
-.music-skin--modern .music-track-info span { font-size:9px; }
+.music-skin--modern .music-track-info > div > span { font-size:9px; }
 .music-skin--modern .music-record-scene { border-radius:12px;background:color-mix(in srgb,var(--site-accent) 16%,var(--mp-paper)); }
 .music-skin--modern .music-record { inset:7px;border:0;box-shadow:0 2px 5px #0003; }
 .music-skin--modern .music-artwork-row { border-bottom:1px solid var(--mp-line); }
@@ -96,3 +96,9 @@
 .music-volume output { font-size:9px;min-width:25px; }
 .music-skin--modern .music-track-info strong { font-size:12px;line-height:1.35; }
 .music-skin--modern .music-track-info span { font-size:9px; }
+
+/* Keep record geometry independent from the text styles of the track row. */
+.music-record-scene { aspect-ratio:1;flex:0 0 auto;margin:0; }
+.music-record,.music-record-label,.music-record-arm,.music-note { margin:0; }
+.music-record { aspect-ratio:1;border-radius:50%; }
+.music-record-label { aspect-ratio:1;border-radius:50%;line-height:1; }

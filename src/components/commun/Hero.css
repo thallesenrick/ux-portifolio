@@ -212,3 +212,8 @@
 @media(max-width:767px) { .hero-art-reveal { right:-18px;width:auto; }.hero-controls-dock { --dock-panel-inset:6px; } }
 
 @media(prefers-reduced-motion:reduce) { #hero-music-anchor { transition:none; } }
+.hero-color-reveal .sketch-rgb-panel { padding:11px 12px 8px; }
+.hero-color-reveal .sketch-rgb-panel legend { font-size:14px;margin-bottom:5px; }
+.hero-color-reveal .hero-surface-normal .sketch-rgb-panel legend { font-size:13px;line-height:21px; }
+.hero-color-reveal .sketch-rgb-result { margin-top:5px;padding-top:5px; }
+.hero-color-reveal .sketch-rgb-result > span { width:12px;height:12px; }

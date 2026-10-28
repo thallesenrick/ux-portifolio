@@ -9,6 +9,9 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import ClickPop from "./components/commun/ClickPop";
 import MusicPlayer from "./components/commun/MusicPlayer";
+import ScrollCue from "./components/commun/ScrollCue";
+import ConnectionGuard from "./components/ConnectionGuard";
+import PageStatus from "./pages/PageStatus";
 
 const Portfolio=lazy(()=>import("./pages/Portfolio"));
 const Playhub=lazy(()=>import("./pages/Playhub"));
@@ -26,6 +29,7 @@ export default function App() {
         </div>
     
         <main className="pt-0">
+          <ConnectionGuard>
           <Suspense fallback={<div className="min-h-[65vh] grid place-items-center pt-32 text-neutral-500" role="status" aria-label="Carregando / Loading">...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -37,12 +41,15 @@ export default function App() {
             <Route path="/projects/oryon" element={<Oryon />} />
             <Route path="/projects/oryon-legis" element={<OryonLegis />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<PageStatus />} />
           </Routes>
           </Suspense>
+          </ConnectionGuard>
         </main>
         <Footer />
         <MusicPlayer />
         <ClickPop />
+        <ScrollCue />
       </div>
     </Router>
     </HeroAccentProvider>

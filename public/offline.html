@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>Offline | Thalles Enrick</title>
+  <style>
+    *{box-sizing:border-box}body{--paper:#fffefa;--ink:#292927;--muted:#73736b;--accent:#df2636;margin:0;min-height:100svh;display:grid;place-items:center;padding:30px;background:var(--paper);color:var(--ink);font-family:system-ui,sans-serif}body.dark{--paper:#171719;--ink:#eeede7;--muted:#aaa99f;--accent:#ff7780}main{max-width:730px;width:100%;position:relative;padding:45px 22px}small{letter-spacing:.1em;font-size:10px;color:var(--muted)}.art{width:200px;height:140px;position:relative;margin-bottom:25px}.art svg{width:100%;height:100%;stroke:var(--ink);stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round}.art strong{position:absolute;inset:0;display:grid;place-items:center;color:var(--accent);font:700 25px 'Segoe Print',cursive;rotate:-4deg}h1{font:700 clamp(34px,6vw,57px)/1.1 'Segoe Print',Georgia,serif;letter-spacing:-.04em;margin:18px 0 22px;max-width:650px}p{font-size:14px;line-height:1.9;max-width:430px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px}button,a{position:relative;color:var(--ink);border:1.3px solid currentColor;border-radius:2px 5px 3px 1px;padding:12px 18px;background:var(--paper);font:16px 'Segoe Print',cursive;text-decoration:none;cursor:pointer;rotate:-1deg}button{background:color-mix(in srgb,var(--accent) 10%,var(--paper))}button:before,a:before{content:'';position:absolute;inset:3px -4px -4px 3px;border-left:1px solid;border-top:1px solid;opacity:.35;pointer-events:none}button:focus-visible,a:focus-visible{outline:2px dashed var(--accent);outline-offset:5px}.brand{font-size:12px;letter-spacing:.06em;margin-top:60px;color:var(--muted)}#status{font-size:12px;min-height:24px;margin-top:20px}
+  </style>
+</head>
+<body>
+<main>
+  <div class="art" aria-hidden="true"><svg viewBox="0 0 200 140"><path d="M16 14L175 8L185 120L20 130Z"/><path d="M145 10L149 34L178 30M38 105Q72 62 104 92T163 68M155 59L163 68L153 73"/><path d="M5 38L193 27M11 3L24 138" stroke-dasharray="3 5" opacity=".25"/></svg><strong>OFFLINE</strong></div>
+  <small>THALLES ENRICK / OFFLINE</small>
+  <h1 id="heading">A conexão deu uma pausa.</h1>
+  <p id="description">Confira sua conexão e tente novamente para continuar de onde parou.</p>
+  <div class="actions"><button id="retry" type="button">Tentar novamente</button><a id="home" href="/">Voltar ao início ↗</a></div>
+  <p id="status" role="status"></p>
+  <div class="brand">THALLES ENRICK / UX, UI & FRONT-END</div>
+</main>
+<script>
+  const messages={pt:{title:'A conexão deu uma pausa.',description:'Confira sua conexão e tente novamente para continuar de onde parou.',retry:'Tentar novamente',home:'Voltar ao início ↗',waiting:'Ainda sem conexão. Confira sua rede e tente novamente.'},en:{title:'The connection took a pause.',description:'Check your connection and try again to pick up where you left off.',retry:'Try again',home:'Back to home ↗',waiting:'Still offline. Check your network and try again.'},es:{title:'La conexión hizo una pausa.',description:'Revisa tu conexión e inténtalo de nuevo para continuar donde lo dejaste.',retry:'Intentar de nuevo',home:'Volver al inicio ↗',waiting:'Todavía sin conexión. Revisa tu red e inténtalo de nuevo.'}};
+  let lang='pt';try{lang=localStorage.getItem('portfolio-language')||'pt';const theme=localStorage.getItem('theme');document.body.classList.toggle('dark',theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme:dark)').matches));}catch{}
+  const text=messages[lang]||messages.pt;document.documentElement.lang=lang==='pt'?'pt-BR':lang;document.getElementById('heading').textContent=text.title;document.getElementById('description').textContent=text.description;document.getElementById('retry').textContent=text.retry;document.getElementById('home').textContent=text.home;
+  document.getElementById('retry').addEventListener('click',()=>{if(navigator.onLine)location.reload();else document.getElementById('status').textContent=text.waiting;});
+</script>
+</body>
+</html>

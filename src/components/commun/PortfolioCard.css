@@ -12,3 +12,9 @@
 .hero-portfolio-details > a:hover { transform:rotate(.5deg) translateY(-3px);background:color-mix(in srgb,var(--sketch-accent) 30%,var(--sketch-paper)); }
 .hero-portfolio-card { max-width:410px; }
 @media(prefers-reduced-motion:reduce) { .hero-portfolio-details > a { transition:none; } }
+.hero-portfolio-card { max-width:365px;padding:12px;gap:16px; }
+.hero-portfolio-preview { width:80px; }
+.hero-portfolio-details { flex:1; }
+.hero-portfolio-details h2 { font-size:21px;line-height:1.15;margin:0 0 5px; }
+.hero-portfolio-details > a { margin-top:10px;font-size:13px;padding:9px; }
+@media(max-width:380px) { .hero-portfolio-card { padding:11px;gap:13px; }.hero-portfolio-preview { width:70px; }.hero-portfolio-details h2 { font-size:20px; } }
