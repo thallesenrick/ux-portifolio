@@ -1,0 +1,63 @@
+@font-face { font-family:"RachAqui Montserrat";src:url('../../assets/fonts/Montserrat-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap; }
+@font-face { font-family:"RachAqui Montserrat";src:url('../../assets/fonts/Montserrat-500.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap; }
+@font-face { font-family:"RachAqui Montserrat";src:url('../../assets/fonts/Montserrat-700.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap; }
+
+.rq-onboarding { position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:65px;padding:64px 70px;border:1px solid #fff2;border-radius:30px;overflow:hidden;background:#260804 url('../../assets/projects/rachaqui/art/crimson-ribbons.webp') center/cover;color:#fff5ed; }
+.rq-onboarding::before { content:'';position:absolute;inset:0;background:linear-gradient(110deg,#160302eb,#20060399 52%,#26060315);z-index:-1; }
+.rq-onboarding .ph-kicker { color:#ffb39b;font-size:9px; }
+.rq-onboarding-copy h2 { font-size:clamp(34px,3.5vw,49px);font-weight:500;line-height:1.12;letter-spacing:-.055em;margin-top:21px; }
+.rq-onboarding-copy h2 em { font-style:normal;color:#ffb39b; }
+.rq-onboarding-copy > p { max-width:390px;color:#e0c6bd;font-size:13px;line-height:1.95;margin-top:23px; }
+.rq-onboarding-steps { display:grid;margin-top:35px;border-top:1px solid #fff3; }
+.rq-onboarding-steps button { display:flex;align-items:center;gap:15px;padding:18px 0;border-bottom:1px solid #fff3;cursor:pointer;text-align:left;color:#cfb3a9;transition:color .2s; }
+.rq-onboarding-steps button > span { font-size:10px;font-variant-numeric:tabular-nums; }
+.rq-onboarding-steps strong { font-size:12px;font-weight:500; }
+.rq-onboarding-steps svg { margin-left:auto;opacity:0;transform:translate(-5px,5px);transition:opacity .2s,transform .2s; }
+.rq-onboarding-steps button[aria-pressed=true],.rq-onboarding-steps button:hover { color:#fff7ef; }
+.rq-onboarding-steps button[aria-pressed=true] > span { color:#ffb39b; }
+.rq-onboarding-steps button[aria-pressed=true] svg { opacity:1;transform:none; }
+.rq-onboarding-copy > .rq-onboarding-hint { font-size:10px;color:#d0b0a4;margin-top:20px; }
+.rq-onboarding-source { display:inline-flex;align-items:center;gap:10px;font-size:11px;color:#ffb39b;margin-top:24px; }
+.rq-onboarding-stage { display:flex;flex-direction:column;align-items:center;min-width:0; }
+.rq-onboarding-device { width:min(310px,100%);padding:8px;border:1px solid #a8978b;background:linear-gradient(135deg,#594d47,#1c1917 38%,#45352e);border-radius:43px;box-shadow:0 35px 65px #0007,0 5px 12px #0008,inset 0 0 0 3px #201b18; }
+.rq-onboarding-screen { position:relative;container-type:inline-size;aspect-ratio:430/932;isolation:isolate;overflow:hidden;border-radius:34px;background:#b82d00;font-family:"RachAqui Montserrat",sans-serif;color:#414141; }
+.rq-onboarding-art { position:absolute;inset:0;pointer-events:none; }
+.rq-onboarding-background { position:absolute;left:0;top:-.4292%;width:100%;height:100%;object-fit:cover; }
+.rq-onboarding-art--2 .rq-onboarding-background { top:0; }
+.rq-onboarding-background--second { left:-.9302%;top:-9.8712%; }
+.rq-onboarding-status { position:absolute;inset:0 0 auto;height:4.5064%;font-family:Arial,sans-serif;color:#fff; }
+.rq-onboarding-status-bg { position:absolute;inset:0;width:100%;height:100%; }
+.rq-onboarding-status > span { position:absolute;left:7.5%;top:34%;font-size:3.4884cqw;line-height:1.2;font-weight:600; }
+.rq-onboarding-status > div { position:absolute;right:3.2558%;top:35.714%;width:15.814%;height:38.095%;display:flex;align-items:center;justify-content:space-between;gap:.6cqw; }
+.rq-onboarding-status > div > img:nth-child(1) { width:26.4706%;height:75%; }
+.rq-onboarding-status > div > img:nth-child(2) { width:30.8824%;height:93.75%; }
+.rq-onboarding-status > div > img:nth-child(3) { width:36.7647%;height:75%; }
+.rq-onboarding-illustration { position:absolute;left:50%;top:8.2618%;width:116.2791%;height:53.6481%;transform:translateX(-50%);overflow:clip; }
+.rq-onboarding-illustration > img,.rq-onboarding-illustration-mask > img { width:100%;height:100%;max-width:none;display:block;object-fit:fill; }
+.rq-onboarding-illustration-mask { position:absolute;inset:7.3% -5.83% -1.37% -2.83%;mask-mode:alpha;mask-repeat:no-repeat;mask-position:3.29465cqw -8.48256cqw;mask-size:116.2791cqw 116.2791cqw; }
+.rq-onboarding-art--1 .rq-onboarding-illustration { top:8.3691%; }
+.rq-onboarding-art--1 .rq-onboarding-illustration-mask { inset:8.67% -20.4% -16.25% -15.67%;mask-position:18.217cqw -10.0774cqw; }
+.rq-onboarding-art--2 .rq-onboarding-illustration { top:8.1545%; }
+.rq-onboarding-sheet { position:absolute;inset:61.1588% 0 0;background:#fff;border-radius:6.9767cqw 6.9767cqw 0 0; }
+.rq-onboarding-message h3 { position:absolute;top:67.5966%;left:0;width:100%;margin:0;text-align:center;font-size:5.5814cqw;font-weight:700;letter-spacing:-.0775cqw;line-height:1.25;color:#414141; }
+.rq-onboarding-message p { position:absolute;top:73.927%;left:6.9767%;width:86.0465%;margin:0;text-align:center;font-size:3.7209cqw;line-height:1.5;font-weight:400;letter-spacing:-.0775cqw;color:#414141; }
+.rq-onboarding-dots { position:absolute;top:84.2275%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:1.6279cqw; }
+.rq-onboarding-dots button { position:relative;width:1.6279cqw;height:1.6279cqw;padding:0;border:0;border-radius:99px;background:#dcdcdc;cursor:pointer; }
+.rq-onboarding-dots button::before { content:'';position:absolute;inset:-12px -2px; }
+.rq-onboarding-dots button[aria-pressed=true] { width:5.5814cqw;background:#ac1304; }
+.rq-onboarding-skip { position:absolute;left:6.0465%;top:91.45%;display:flex;align-items:center;min-height:30px;color:#777;font-size:3.4884cqw;transform:translateY(-6px); }
+.rq-onboarding-next { position:absolute;left:81.8605%;top:90.3433%;width:11.6279%;aspect-ratio:1;padding:0;cursor:pointer;border-radius:50%; }
+.rq-onboarding-next::before { content:'';position:absolute;inset:-5px;border-radius:50%; }
+.rq-onboarding-next > img { display:block;width:100%;height:100%; }
+.rq-onboarding-start { position:absolute;left:6.5116%;top:90.3433%;width:86.9767%;height:5.3648%;display:flex;justify-content:center;align-items:center;border-radius:7.093cqw;background:linear-gradient(90deg,#ac1304,#d84a05);font-size:4.186cqw;font-weight:500;letter-spacing:-.0775cqw;color:#fff; }
+.rq-onboarding-stage-footer { display:flex;align-items:center;justify-content:space-between;gap:25px;width:min(294px,100%);margin-top:22px;font-size:10px;color:#e8c7ba; }
+.rq-onboarding-stage-footer > span { font-variant-numeric:tabular-nums;letter-spacing:.1em; }
+.rq-onboarding-stage-footer button { display:flex;align-items:center;gap:7px;min-height:30px;cursor:pointer; }
+.rq-onboarding-stage-footer button:disabled { opacity:.4;cursor:default; }
+.rq-onboarding-caption { margin-top:17px;font-size:7px;letter-spacing:.16em;color:#d0b0a4;text-align:center;line-height:1.8; }
+.rq-onboarding :is(button,a):focus-visible,.rq-onboarding-device:focus-visible { outline:2px solid #ffb39b;outline-offset:5px; }
+.rq-onboarding-screen :is(button,a):focus-visible { outline-color:#ac1304;outline-offset:4px; }
+
+@media(max-width:1050px) { .rq-onboarding { padding:45px 35px;gap:35px; }.rq-onboarding-copy h2 { font-size:39px; }.rq-onboarding-device { width:min(285px,100%);border-radius:39px; }.rq-onboarding-screen { border-radius:30px; } }
+@media(max-width:767px) { .rq-onboarding { grid-template-columns:1fr;gap:37px;padding:34px 24px;background-position:65% center;border-radius:23px; }.rq-onboarding::before { background:linear-gradient(160deg,#170201ed,#2406059c 60%,#1c03025c); }.rq-onboarding-copy h2 { font-size:37px; }.rq-onboarding-copy > p { font-size:12px;max-width:none; }.rq-onboarding-steps { margin-top:25px; }.rq-onboarding-steps button { padding:15px 0; }.rq-onboarding-copy > .rq-onboarding-hint { margin-top:17px; }.rq-onboarding-source { margin-top:17px; }.rq-onboarding-device { width:min(310px,100%); }.rq-onboarding-caption { font-size:6px; }.rq-onboarding-stage-footer { margin-top:16px; } }
+@media(prefers-reduced-motion:reduce) { .rq-onboarding-steps button,.rq-onboarding-steps svg { transition:none; } }
