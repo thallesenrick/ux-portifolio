@@ -1,3 +1,4 @@
+import { spanish } from "../../lib/spanish";
 import { useEffect, useId, useRef, useState, type CSSProperties } from "react";
 import { AnimatePresence, LayoutGroup, motion, useInView, useMotionValue, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Pause, Play } from "lucide-react";
@@ -86,7 +87,7 @@ export default function SelectedProjects() {
     setFocused(false);
     elapsed.current = 0; progress.set(0);
     setSlide((current) => ({ project: (index + projects.length) % projects.length, photo: 0, revision: current.revision + 1 }));
-    setAnnouncement((pt ? "Em destaque: " : "Now featured: ") + projects[(index + projects.length) % projects.length].title);
+    setAnnouncement((pt ? "Em destaque: " : (lang === "es" ? spanish("Now featured: ") : "Now featured: ")) + projects[(index + projects.length) % projects.length].title);
     if (keyboardSelection) requestAnimationFrame(() => detailsRef.current?.focus({ preventScroll: true }));
   };
   const selectPhoto = (photo: number) => {
@@ -97,47 +98,47 @@ export default function SelectedProjects() {
   return (
     <section className="selected-projects selected-projects--sketch" aria-labelledby="selected-projects-title" style={{"--work-accent":accent.color} as CSSProperties}>
       <svg className="projects-margin-doodle" viewBox="0 0 150 180" fill="none" aria-hidden="true"><path d="M30 6L35 32L57 19L45 44L75 51L45 57L55 81L34 66L22 93L20 62L2 67L17 48L1 35L22 36Z" /><path d="M77 88Q140 103 120 151Q111 166 87 157M87 157L104 150M87 157L100 169" /></svg>
-      <div className="selected-projects-heading"><div><span className="selected-projects-eyebrow"><span /> {pt ? "CADERNO DE PROJETOS" : "PROJECT SKETCHBOOK"} / 01—{String(projects.length).padStart(2, "0")}</span><h2 id="selected-projects-title">{pt ? "Projetos que merecem" : "Projects worth"}<br /><span>{pt ? "um olhar mais perto." : "a closer look."}</span></h2></div><Link to="/projects" className="selected-projects-all">{pt ? "Todos os projetos" : "All projects"}<ArrowUpRight size={16} /></Link></div>
+      <div className="selected-projects-heading"><div><span className="selected-projects-eyebrow"><span /> {pt ? "CADERNO DE PROJETOS" : (lang === "es" ? spanish("PROJECT SKETCHBOOK") : "PROJECT SKETCHBOOK")} / 01—{String(projects.length).padStart(2, "0")}</span><h2 id="selected-projects-title">{pt ? "Projetos que merecem" : (lang === "es" ? spanish("Projects worth") : "Projects worth")}<br /><span>{pt ? "um olhar mais perto." : (lang === "es" ? spanish("a closer look.") : "a closer look.")}</span></h2></div><Link to="/projects" className="selected-projects-all">{pt ? "Todos os projetos" : (lang === "es" ? spanish("All projects") : "All projects")}<ArrowUpRight size={16} /></Link></div>
       <LayoutGroup id={layoutId}>
-      <div ref={carouselRef} className="project-carousel" role="region" aria-roledescription={pt ? "carrossel" : "carousel"} aria-label={pt ? "Projetos em destaque" : "Featured projects"}
+      <div ref={carouselRef} className="project-carousel" role="region" aria-roledescription={pt ? "carrossel" : (lang === "es" ? spanish("carousel") : "carousel")} aria-label={pt ? "Projetos em destaque" : (lang === "es" ? spanish("Featured projects") : "Featured projects")}
         onPointerEnter={(event) => { if (event.pointerType === "mouse") setHovered(true); }} onPointerLeave={() => setHovered(false)} onPointerCancel={() => setHovered(false)}
         onFocus={(event) => { if (event.target.matches(":focus-visible")) setFocused(true); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}
         onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); selectProject(slide.project + 1); } if (event.key === "ArrowLeft") { event.preventDefault(); selectProject(slide.project - 1); } }}>
         <motion.div key={project.id} layoutId={reduce ? undefined : `project-card-${project.id}`} transition={softTransition} className="project-feature-slot" style={{ borderRadius: 8 }}>
         <SpotlightCard className="project-feature" theme={theme} spotlightColor={accent.color} intensity={.1}>
           <div className={`project-feature-art project-tone--${project.tone}`}>
-            <div className="project-feature-top"><span><span className="project-live-dot" />{pt ? "EM DESTAQUE" : "IN THE SPOTLIGHT"}</span><span>0{slide.project + 1} / 0{projects.length}</span></div>
+            <div className="project-feature-top"><span><span className="project-live-dot" />{pt ? "EM DESTAQUE" : (lang === "es" ? spanish("IN THE SPOTLIGHT") : "IN THE SPOTLIGHT")}</span><span>0{slide.project + 1} / 0{projects.length}</span></div>
             <div className="project-feature-photo-stage">
             <AnimatePresence initial={false}>
-              <motion.img key={project.id + slide.photo} src={photos[slide.photo]} alt={`${project.title} - ${pt ? "previa conceitual" : "concept preview"} ${slide.photo + 1}`}
+              <motion.img key={project.id + slide.photo} src={photos[slide.photo]} alt={`${project.title} - ${pt ? "previa conceitual" : (lang === "es" ? spanish("concept preview") : "concept preview")} ${slide.photo + 1}`}
                 className="project-feature-image" initial={{ opacity: 0, scale: reduce ? 1 : 1.035 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: reduce ? 1 : .985 }} transition={{ duration: reduce ? 0 : .7, ease: [.22, 1, .36, 1] }} />
             </AnimatePresence>
             </div>
-            <span className="project-feature-concept">{pt ? "PRÉVIAS CONCEITUAIS" : "CONCEPT PREVIEWS"}</span>
-            <div className="project-photo-controls"><span>{String(slide.photo + 1).padStart(2,"0")} / {String(photos.length).padStart(2,"0")}</span><div>{photos.map((_,index) => <button key={index} type="button" aria-label={`${pt ? "Ver imagem" : "View image"} ${index + 1}`} aria-pressed={slide.photo === index} onClick={() => selectPhoto(index)}><span className={index === slide.photo ? "is-active" : ""} /></button>)}</div></div>
+            <span className="project-feature-concept">{pt ? "PRÉVIAS CONCEITUAIS" : (lang === "es" ? spanish("CONCEPT PREVIEWS") : "CONCEPT PREVIEWS")}</span>
+            <div className="project-photo-controls"><span>{String(slide.photo + 1).padStart(2,"0")} / {String(photos.length).padStart(2,"0")}</span><div>{photos.map((_,index) => <button key={index} type="button" aria-label={`${pt ? "Ver imagem" : (lang === "es" ? spanish("View image") : "View image")} ${index + 1}`} aria-pressed={slide.photo === index} onClick={() => selectPhoto(index)}><span className={index === slide.photo ? "is-active" : ""} /></button>)}</div></div>
           </div>
           <div className="project-feature-timeline" aria-hidden="true">{photos.map((_, index) => <div key={index}><motion.span style={index === slide.photo ? { scaleX: progress } : { scaleX: index < slide.photo ? 1 : 0 }} /></div>)}</div>
-          <div className="project-feature-copy"><div><ProjectTags category={project.category} /><h3>{project.title}</h3><p>{pt ? project.description : project.descriptionEn}</p></div><Link ref={detailsRef} to={project.detailPath || `/projects#${project.id}`}>{pt ? "Ver detalhes" : "View details"}<ArrowUpRight size={17} /></Link></div>
+          <div className="project-feature-copy"><div><ProjectTags category={project.category} /><h3>{project.title}</h3><p>{pt ? project.description : (lang === "es" ? spanish(project.descriptionEn) : project.descriptionEn)}</p></div><Link ref={detailsRef} to={project.detailPath || `/projects#${project.id}`}>{pt ? "Ver detalhes" : (lang === "es" ? spanish("View details") : "View details")}<ArrowUpRight size={17} /></Link></div>
           <ProjectSketchFrame />
         </SpotlightCard>
         </motion.div>
-        <div className="project-queue" aria-label={pt ? "Lista de projetos" : "Project list"}>
-          <button type="button" className="project-queue-nav" onClick={() => scrollQueue(-1)} aria-label={pt ? "Ver projetos anteriores na lista" : "Show previous projects in list"}><ChevronUp size={16} /></button>
+        <div className="project-queue" aria-label={pt ? "Lista de projetos" : (lang === "es" ? spanish("Project list") : "Project list")}>
+          <button type="button" className="project-queue-nav" onClick={() => scrollQueue(-1)} aria-label={pt ? "Ver projetos anteriores na lista" : (lang === "es" ? spanish("Show previous projects in list") : "Show previous projects in list")}><ChevronUp size={16} /></button>
           <div className="project-queue-viewport"><div className="project-queue-track">
           {queue.map((index) => {
             const item = projects[index];
-            return <motion.button initial={false} animate={{ opacity: 1 }} layout layoutId={reduce ? undefined : `project-card-${item.id}`} style={{ borderRadius: 8 }} key={item.id} className="project-queue-card" title={item.title} type="button" onClick={() => selectProject(index)} aria-label={`${pt ? "Colocar em destaque" : "Feature"}: ${item.title}`} transition={{ layout: softTransition, opacity: { duration: reduce ? 0 : .4 }, y: { duration: reduce ? 0 : .45, ease: [.22, 1, .36, 1] } }}>
+            return <motion.button initial={false} animate={{ opacity: 1 }} layout layoutId={reduce ? undefined : `project-card-${item.id}`} style={{ borderRadius: 8 }} key={item.id} className="project-queue-card" title={item.title} type="button" onClick={() => selectProject(index)} aria-label={`${pt ? "Colocar em destaque" : (lang === "es" ? spanish("Feature") : "Feature")}: ${item.title}`} transition={{ layout: softTransition, opacity: { duration: reduce ? 0 : .4 }, y: { duration: reduce ? 0 : .45, ease: [.22, 1, .36, 1] } }}>
               <div className={`project-queue-image project-tone--${item.tone}`}><img src={item.gallery?.[0] || item.image} alt="" loading="lazy" /><span className="project-queue-promote"><ArrowUpRight size={18} /></span></div>
               <ProjectSketchFrame />
               <div className="project-queue-copy"><div><h3>{item.title}</h3></div><ArrowRight size={16} /></div>
             </motion.button>;
           })}
           </div></div>
-          <button type="button" className="project-queue-nav" onClick={() => scrollQueue(1)} aria-label={pt ? "Ver proximos projetos na lista" : "Show next projects in list"}><ChevronDown size={16} /></button>
+          <button type="button" className="project-queue-nav" onClick={() => scrollQueue(1)} aria-label={pt ? "Ver proximos projetos na lista" : (lang === "es" ? spanish("Show next projects in list") : "Show next projects in list")}><ChevronDown size={16} /></button>
         </div>
       </div>
       </LayoutGroup>
-      <div className="project-carousel-footer"><div className="project-playback"><button type="button" onClick={() => setPlaying(!shouldPlay)} aria-label={shouldPlay ? (pt ? "Pausar troca automatica" : "Pause autoplay") : (pt ? "Iniciar troca automatica" : "Start autoplay")}>{shouldPlay ? <Pause size={13} /> : <Play size={13} />}</button><span>{!shouldPlay ? (pt ? "Pausado" : "Paused") : paused ? (pt ? "Em pausa enquanto explora" : "Paused while you explore") : (pt ? "4s por imagem / troca automatica" : "4s per image / autoplay")}</span></div><div className="project-carousel-arrows"><button type="button" onClick={() => selectProject(slide.project - 1)} aria-label={pt ? "Projeto anterior" : "Previous project"}><ChevronLeft size={17} /></button><button type="button" onClick={() => selectProject(slide.project + 1)} aria-label={pt ? "Proximo projeto" : "Next project"}><ChevronRight size={17} /></button></div></div>
+      <div className="project-carousel-footer"><div className="project-playback"><button type="button" onClick={() => setPlaying(!shouldPlay)} aria-label={shouldPlay ? (pt ? "Pausar troca automatica" : (lang === "es" ? spanish("Pause autoplay") : "Pause autoplay")) : (pt ? "Iniciar troca automatica" : (lang === "es" ? spanish("Start autoplay") : "Start autoplay"))}>{shouldPlay ? <Pause size={13} /> : <Play size={13} />}</button><span>{!shouldPlay ? (pt ? "Pausado" : (lang === "es" ? spanish("Paused") : "Paused")) : paused ? (pt ? "Em pausa enquanto explora" : (lang === "es" ? spanish("Paused while you explore") : "Paused while you explore")) : (pt ? "4s por imagem / troca automatica" : (lang === "es" ? spanish("4s per image / autoplay") : "4s per image / autoplay"))}</span></div><div className="project-carousel-arrows"><button type="button" onClick={() => selectProject(slide.project - 1)} aria-label={pt ? "Projeto anterior" : (lang === "es" ? spanish("Previous project") : "Previous project")}><ChevronLeft size={17} /></button><button type="button" onClick={() => selectProject(slide.project + 1)} aria-label={pt ? "Proximo projeto" : (lang === "es" ? spanish("Next project") : "Next project")}><ChevronRight size={17} /></button></div></div>
       <span className="sr-only" role="status">{announcement}</span>
     </section>
   );

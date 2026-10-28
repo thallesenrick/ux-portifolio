@@ -1,9 +1,18 @@
 import { createContext, useContext } from "react";
 
 
-export type Lang = "pt" | "en";
+export type Lang = "pt" | "en" | "es";
 
 export const translations = {
+  es: {
+    welcome: "Bienvenido a mi perfil", strengthsLabel: "Lo que aporto a tu proyecto", processLabel: "PROCESO",
+    designTitle: "Diseño que empieza por el usuario.", designText: "Transformo necesidades en interfaces claras e intuitivas, conectando investigación, usabilidad e identidad visual.",
+    developmentTitle: "De la idea a la experiencia digital.", developmentText: "Doy vida al diseño con interfaces adaptables, atención al detalle e interacciones que hacen más fluida la navegación.",
+    processTitle: "Entender. Crear. Evolucionar.", processText: "Mi proceso combina escucha, prototipado y pruebas para refinar cada solución con propósito.", processNote: "Las buenas experiencias nacen de la colaboración.", processTags: "Investigación · Diseño · Código",
+    siteName: "Thalles Enrick", homeTitle: "Soy Thalles Enrick\nDesarrollador Web y Diseñador UX", homeSubtitle: "Soy un profesional centrado en la interacción y la experiencia de usuario, creando soluciones innovadoras.",
+    btnCV: "Descargar CV", btnPortfolio: "Descargar portafolio", aboutTitle: "Sobre mí", aboutText: "Soy diseñador UX/UI con experiencia en investigación de usuarios, prototipado y sistemas de diseño. Trabajo con Figma, Adobe XD e implementación front-end.",
+    projectsTitle: "Mis proyectos", contactTitle: "Contacto", contactSubtitle: "Envíame un mensaje. Estoy disponible para proyectos y colaboraciones.", footerCopyright: "© Todos los derechos reservados.", navHome: "Inicio", navAbout: "Sobre mí", navProjects: "Proyectos", navContact: "Contacto", toggleDark: "Tema",
+  },
   pt: {
     welcome: "Bem-vindo ao meu perfil",
     strengthsLabel: "O que eu trago para o seu projeto",

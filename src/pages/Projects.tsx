@@ -1,3 +1,4 @@
+import { spanish } from "../lib/spanish";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { PenLine } from "lucide-react";
@@ -14,7 +15,7 @@ export default function Projects() {
     else window.scrollTo({ top: 0, behavior: "instant" });
   }, [hash]);
   return <section className="projects-notebook" aria-labelledby="projects-page-title">
-    <header className="projects-notebook-heading"><span><PenLine size={15} />{pt ? "CADERNO DE PROJETOS" : "PROJECT SKETCHBOOK"} / {String(projects.length).padStart(2,"0")}</span><h1 id="projects-page-title">{pt ? "Ideias que saíram" : "Ideas that moved"}<br /><em>{pt ? "do papel." : "beyond the sketch."}</em></h1><p>{pt ? "Um olhar sobre os produtos, interfaces e experiências que venho desenhando. Escolha um projeto para conhecer de perto." : "A look at the products, interfaces and experiences I have been designing. Pick a project to take a closer look."}</p></header>
+    <header className="projects-notebook-heading"><span><PenLine size={15} />{pt ? "CADERNO DE PROJETOS" : (lang === "es" ? spanish("PROJECT SKETCHBOOK") : "PROJECT SKETCHBOOK")} / {String(projects.length).padStart(2,"0")}</span><h1 id="projects-page-title">{pt ? "Ideias que saíram" : (lang === "es" ? spanish("Ideas that moved") : "Ideas that moved")}<br /><em>{pt ? "do papel." : (lang === "es" ? spanish("beyond the sketch.") : "beyond the sketch.")}</em></h1><p>{pt ? "Um olhar sobre os produtos, interfaces e experiências que venho desenhando. Escolha um projeto para conhecer de perto." : (lang === "es" ? spanish("A look at the products, interfaces and experiences I have been designing. Pick a project to take a closer look.") : "A look at the products, interfaces and experiences I have been designing. Pick a project to take a closer look.")}</p></header>
     <div className="projects-notebook-grid">{projects.map((project, index) => <div id={project.id} key={project.id} className="projects-notebook-item"><ProjectCard project={project} index={index} /></div>)}</div>
   </section>;
 }

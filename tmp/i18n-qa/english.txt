@@ -1,0 +1,687 @@
+0|Main navigation
+1|Close projects
+2|Open projects
+3|Toggle theme
+4|Let's talk
+5|PROJECT SKETCHBOOK
+6|Ideas in motion.
+7|Explore all
+8|Research, design and code. From start to detail.
+9|Your project could be next
+10|Enlarge screen: 
+11|Scrollable preview: 
+12|Close screen
+13|Original screen exported from Figma.
+14|Open image at original size
+15|Portfolio enquiry: 
+16|Name: 
+17|Your name
+18|What should I call you?
+19|Your email
+20|What shall we create?
+21|Tell me a little about your idea...
+22|Opens your email app so you can review and send.
+23|Email contact coming soon.
+24|Prepare email
+25|Review your message in your email app and send it there. If it did not open, your text is still here.
+26|LET'S TALK
+27|A good idea starts
+28|with a conversation.
+29|Have a project in mind or want to exchange ideas? Tell me a little about what you are imagining.
+30|your next project can start here
+31|present
+32|Areas and tools
+33|PROFESSIONAL EXPERIENCE
+34|Experience that becomes
+35|new possibilities.
+36|From front-end implementation to UX/UI leadership: a path connecting people, design and technology.
+37|Designing
+38|experiences,
+39|beyond screens.
+40|I'm Thalles Enrick. I connect research, design and code to create experiences that make sense to the people using them.
+41|empathy
+42|research
+43|strategy
+44|idea!
+45|Drag to reveal
+46|Reveal photo and sketch
+47|sketch
+48|Social networks
+49|Scroll to
+50|discover
+51|Preparing your soundtrack…
+52|Buffering music…
+53|Now playing
+54|Choose another track or open YouTube.
+55|The music could not load.
+56|A moment to listen
+57|Open player and listen
+58|A soundtrack for creating
+59|playing
+60|listen
+61|SKETCHBOOK SOUNDTRACK
+62|Collapse player
+63|SIDE A / CREATIVITY
+64|Open music on YouTube
+65|Retry loading music
+66|Pause music
+67|Play music
+68|Music volume
+69|CHOOSE YOUR SOUNDTRACK
+70|Music player
+71|Browse portfolio
+72|Thalles Enrick portfolio magazine cover
+73|FROM SCREEN TO PAPER
+74|My world,
+in pages.
+75|Projects and ideas in a magazine to take with you.
+76|Read online
+77|Download portfolio PDF
+78|Explore project
+79|Red
+80|Green
+81|Blue
+82|Mix your color
+83|your signature
+84|Now featured: 
+85|Projects worth
+86|a closer look.
+87|All projects
+88|carousel
+89|Featured projects
+90|IN THE SPOTLIGHT
+91|concept preview
+92|CONCEPT PREVIEWS
+93|View image
+94|View details
+95|Project list
+96|Show previous projects in list
+97|Feature
+98|Show next projects in list
+99|Pause autoplay
+100|Start autoplay
+101|Paused
+102|Paused while you explore
+103|4s per image / autoplay
+104|Previous project
+105|Next project
+106|Language
+107|Understand before drawing.
+108|Connect people's context to product organization. Usability, information architecture and flows give interface decisions direction.
+109|Usability
+110|Architecture
+111|Flows
+112|Research
+113|The path matters as much as the destination.
+114|Give shape to what makes sense.
+115|Hierarchy, components and visual language work together with interaction. Motion communicates states and helps explain what just happened.
+116|Interactivity
+117|Design systems
+118|Prototyping
+119|Visual language
+120|A good interaction speaks to the person using it.
+121|Bring the design closer to the experience.
+122|My front-end focus is React, Tailwind CSS and JavaScript: components, state and responsive interfaces that bring the design to life.
+123|React
+124|Tailwind CSS
+125|JavaScript
+126|Responsive design
+127|From the prototype to real behavior.
+128|Listen
+129|What needs to change?
+130|Context, needs and constraints help frame the question before looking for a visual answer.
+131|Context → needs → direction
+132|Structure
+133|How do the pieces connect?
+134|Architecture and flows organize paths, content and decisions. Sketching makes the conversation concrete.
+135|Information → hierarchy → flow
+136|Explore
+137|How does it behave?
+138|Prototypes bring the idea closer to interaction. States, transitions and feedback reveal possibilities before implementation.
+139|Prototype → interaction → feedback
+140|Refine
+141|What could be clearer?
+142|Reviewing usability, consistency and legibility is part of the process. Craft also lives in small decisions.
+143|Usability → review → consistency
+144|Build
+145|How do we preserve intent in delivery?
+146|Components and documentation bring design and development closer. On the front end, React, Tailwind and JavaScript shape behavior.
+147|Components → state → experience
+148|Attendance
+149|Attendance needs to be visible.
+150|Roll call groups members in cards and presents counts and categories alongside them. Individual states can be read together with the overall picture.
+151|Photo, name and status text connect identity and state. Statistics offer a second reading scale.
+152|Agenda
+153|The session has a guiding thread.
+154|The flow panel groups the session's moments, marks stages and keeps the agenda close to the chair's controls.
+155|A visible agenda helps locate the current moment without relying solely on the chair's memory.
+156|Vote
+157|One decision, three explicit choices.
+158|The item being voted on gives the action context. Yes, no and abstention appear with direct labels and large interaction areas.
+159|Color reinforces the distinction, while text keeps each choice's meaning readable.
+160|Overview
+161|Individual choices meet the collective view.
+162|The overview places members' states alongside voting statistics, with a composition close to the attendance view.
+163|Reusing the visual organization keeps reading familiar as the session context changes.
+164|Speakers
+165|Giving the floor also means organizing time.
+166|The speaker list presents order and available time. Alongside it, controls gather start, pause, stop and add-time actions.
+167|The queue and current speaker stay close, with a prominent timer supporting session management.
+168|See the whole picture. Know where to act.
+169|Metrics, registration trends, sales rankings and service orders share a management view. The hierarchy separates quick reading from detailed investigation.
+170|Summary first; comparisons and records below. Different information levels on the same page.
+171|Dashboard
+172|BI
+173|Management
+174|CRM
+175|Operations start with relationships.
+176|The CRM organizes the sales entry point. Leads, quotations and plans are part of the ERP architecture, before a vehicle enters the monitoring routine.
+177|Lists, search and filters keep the same navigation pattern as the other modules.
+178|Leads
+179|Quotations
+180|Plans
+181|Tracking
+182|The territory becomes an interface.
+183|The monitoring view places the fleet on the map. Vehicle clusters, search and location tools give operational volume a visual context.
+184|The map occupies the main area; tools remain available without competing with vehicle locations.
+185|Monitoring
+186|Map
+187|Fleet
+188|Service orders
+189|From a list to the team's schedule.
+190|The calendar presents times, assignees, vehicles and statuses. Operations can be read over time, alongside the table view.
+191|Text and color work together in statuses. The calendar distributes appointments and makes scheduling overlaps visible.
+192|Schedule
+193|Teams
+194|Statuses
+195|Finance
+196|Financial rules in clear steps.
+197|Bulk invoice generation organizes the business unit, bank accounts, plans, eligibility and period before presenting a list for review.
+198|Separating configuration from review makes the task order clear and gives the empty list context.
+199|Invoices
+200|Contracts
+201|Review
+202|User
+203|FOR THE CUSTOMER
+204|Protection in the palm of your hand.
+205|Customers find their vehicle, check tracking information and access invoices and contracts in an experience of their own. The focus shifts from the entire operation to what matters to one person.
+206|Vehicle and location
+207|Invoices and payments
+208|Profile and contracts
+209|Technician
+210|FOR THE FIELD TEAM
+211|Less searching. More context.
+212|The schedule is the starting point. Inside a service order, the customer, vehicle, address and description help technicians understand the job. Equipment is part of the same execution journey.
+213|Schedule and priorities
+214|Job context
+215|Service equipment
+216|Consultant
+217|FOR THE SALES TEAM
+218|The sales overview travels with you.
+219|The consultant dashboard brings the sales overview to mobile. It complements management, field and customer experiences with a perspective dedicated to the sales team.
+220|Sales dashboard
+221|Organize
+222|ERP
+223|Operations get a schedule.
+224|Times, assignees and service orders appear in the management calendar. This is the starting point of this journey across the interfaces.
+225|Make workload and availability visible before execution.
+226|Prioritize
+227|TECHNICIAN APP
+228|The technician knows the next step.
+229|The mobile schedule gathers daily jobs and their states. Time and status guide the next action without carrying the ERP's full complexity.
+230|Translate the management view into a field routine.
+231|Understand
+232|Every job has its context.
+233|Customer, vehicle, description and addresses stay together in the service order. A location-mismatch warning highlights information that needs checking.
+234|Bring context close to the action of starting a job.
+235|Check
+236|Equipment is part of the story.
+237|The technician interface includes a dedicated equipment view. A job becomes more than an appointment: it includes the elements involved in execution.
+238|Keep equipment identification within the workflow.
+239|Follow
+240|USER APP
+241|At the other end, clarity for the customer.
+242|The app presents the vehicle, location, connection and tracking information. The same product vision unfolds into an experience focused on monitoring.
+243|Give customers their own perspective on their vehicle.
+244|Read the operation
+245|Protection, tracking, sales, finance and service need to fit into a comprehensible architecture.
+246|Separate perspectives
+247|Managers, technicians, customers and consultants have different responsibilities. Each interface gets its own information scope.
+248|Create shared foundations
+249|Navigation, forms, tables, colors and states form a reusable language across modules.
+250|Detail the journeys
+251|From the calendar to field work, screens connect business rules to the action each person needs to take.
+252|Court discovery
+253|Arena details
+254|Date, time and court
+255|Review and payment
+256|Reservation tracking
+257|Administrator view
+258|Discovery wireframe
+259|Visual guide and original user flow
+260|Typography and spacing guide
+261|Discover
+262|Where shall we play?
+263|Search and categories bring the sport into focus. Photos, location and hourly pricing help people compare options before opening an arena.
+264|Provide context before asking for a decision.
+265|Is this the right court?
+266|The arena page brings together photos, address, amenities, opening hours and reviews. Essential information stays close to the decision.
+267|Bring the selection criteria into one place.
+268|Which date and time?
+269|Date, time and court use visual selectors. Distinct available, unavailable and selected states make the choice more explicit.
+270|Show availability instead of requiring a conversation to discover it.
+271|What am I booking?
+272|The summary presents subtotal, discount and total alongside payment selection. Review creates a checkpoint before moving forward.
+273|Make the commitment and price visible before confirmation.
+274|Track
+275|When is the next game?
+276|A calendar organizes reservations by date. The product also includes the perspective of the people managing the sports venue.
+277|Continue the experience after booking.
+278|Plan
+279|One question guides the product.
+280|How can someone find an available court without spreading the decision across search, messages and a separate calendar? This is the starting problem framed in this case.
+281|Two sides, one journey: players choose and book; managers oversee operations.
+282|Product problem
+283|User roles
+284|Booking scope
+285|Structure before decoration.
+286|The file documents onboarding, registration, account recovery, search, details, payment and tracking. Booking is the axis connecting these routes.
+287|Separate discovery, selection and review so each screen answers one question.
+288|Navigation flow
+289|Information hierarchy
+290|Wireframe
+291|Give shape to the essentials.
+292|Wireframes organize search, featured venues, categories and court cards before visual polish. The aim is to prioritize content and actions without relying on branding.
+293|A structure that already indicates what to search, compare and open.
+294|Mobile wireframes
+295|Primary actions
+296|Design
+297|An identity with the energy of sport.
+298|The guide links green to the energy, nature and vitality of sports spaces. Montserrat, neutral tones and spacing rules organize the product language.
+299|Use color to guide actions and states, with neutral surfaces for content.
+300|Palette and typography
+301|Selection states
+302|Visual guide
+303|Deliver
+304|From flow to documented interface.
+305|The final screens connect discovery, availability, payment and calendar. The administrative view extends the system to those receiving requests and managing venues.
+306|Document the experience to support prototyping and implementation while keeping visual rules consistent.
+307|High-fidelity UI
+308|Player journey
+309|Administrative view
+310|Product concept and rules
+311|Typography, colors and components
+312|Create room
+313|One place to bring the bill together.
+314|The host names the room and chooses the context of the gathering. The bill moves from scattered conversations to one shared space.
+315|Start with context without demanding every consumption detail up front.
+316|Gather
+317|The group becomes visible.
+318|The room presents participants, the administrator role and the table total. The documented proposal includes invitations by link or code.
+319|Make participation and the context of the split visible.
+320|Add items
+321|Every order has participants.
+322|Recent orders show items and the people associated with them. An item can be individual or shared without assuming the whole table consumed the same things.
+323|Split each item among its consumers rather than splitting everything equally.
+324|My share, without losing the whole.
+325|Individual and table-total views separate two needs: following personal consumption and understanding the group's bill.
+326|Switch perspectives without leaving the room.
+327|A bill that closes the conversation.
+328|Review brings together items, amounts and participants before finalization. The interface gives the host a checkpoint.
+329|Keep the breakdown accessible before closing the room.
+330|Define the rule
+331|Sharing does not mean equal consumption.
+332|The guide starts from one central rule: each participant chooses whom to split each item with. The host oversees the group while each person sees their partial total.
+333|Host and participants
+334|Per-item splitting
+335|Structure the journey
+336|One room, different moments.
+337|Home, room creation, participants, consumption and bill review form the journey. Empty states guide the first action and the room preserves context throughout the split.
+338|Room creation
+339|Empty states
+340|Systematize the visual language
+341|Consistency in every interaction.
+342|The file documents colors, Montserrat, corner radii, spacing and component variants. The identity combines red and orange, with specifications for light and dark themes.
+343|Component guide
+344|Light & dark
+345|Consolidate the interface
+346|From consumption to the final summary.
+347|High-fidelity screens give shape to individual and collective tracking. Bill review is the closing point shown in the material, before evolving payment rules.
+348|Detailed bill
+349|Totals review
+350|en
+351|MY PRACTICE
+352|UX and UI at the center.
+353|Interaction in every connection.
+354|My focus is on experience, usability and visual expression. Front-end work brings those decisions closer to a working interface.
+355|Practice areas
+356|AN OPEN MOODBOARD
+357|Before the screen,
+358|a visual vocabulary.
+359|Art, inspiration and change are part of how I see things. References help explore relationships between form, color, language and intention.
+360|tap a reference →
+361|Visual references
+362|a stroke with a voice
+363|color meets intent
+364|Oryon ecosystem visual composition
+365|FROM MY SKETCHBOOK
+366|My sketched portrait
+367|GESTURE & EXPRESSION
+368|THINK THROUGH THE PROCESS
+369|An idea is not born finished.
+370|The process gives it shape.
+371|A way to organize work, leaving room to go back, try another direction and learn from each step.
+372|Process stages
+373|PROFESSIONAL PROFILE / OPEN SKETCHBOOK
+374|Art in the way I see.
+375|Intent in every
+376|interaction.
+377|I'm Thalles Enrick, a UX/UI designer and Tech Lead. I connect people, design and technology with attention to usability, interactivity and the quality of every delivery.
+378|Explore how I work
+379|design & process
+380|creativity in the making
+381|Art to inspire. Creativity to change.
+382|Think through the process to go beyond the first idea.
+383|QUALITY IN PRACTICE
+384|Care lives
+385|in the decisions.
+386|Well-crafted work needs to make sense to the people using it and to those who will keep building it.
+387|Interaction that guides
+388|Feedback, states and motion help make the interface understandable. Every effect needs intent.
+389|Usability before effects
+390|Hierarchy, legibility and recognizable paths support a clearer experience.
+391|Consistency to evolve
+392|Components, patterns and attention to detail keep the product's language connected across screens.
+393|BEYOND SCREENS
+394|Other ways to build a creative vocabulary.
+395|Art, inspiration, change and creativity also show up in what I enjoy outside work.
+396|Tattoos
+397|Playing instruments
+398|Video games
+399|Cinema
+400|THE NEXT IDEA COULD BE OURS
+401|Let's design
+402|new possibilities?
+403|Explore my projects
+404|Complexity underneath.
+405|Clarity on the surface.
+406|Explore five ERP areas and the decisions organizing each one. Scroll the preview to see the rest of the screen.
+407|ERP modules
+408|THE DESIGN DECISION
+409|Enlarge to explore the details
+410|THE ARCHITECTURE ALSO INCLUDES
+411|Records / Validations / Customer service / Fleet / Events / Inventory / Infrastructure / Settings
+412|CONNECTING THE DOTS
+413|The interface changes.
+414|The story continues.
+415|Pause journey
+416|Play journey
+417|Play the journey
+418|A journey from the management calendar to vehicle monitoring, told through each role's screens.
+419|WHY IT MATTERS
+420|Previous step
+421|Next step
+422|Scroll the consultant dashboard
+423|MOBILE EXPERIENCES
+424|A family of products.
+425|Each person at its center.
+426|The entire ERP does not need to fit on a phone. Each role gets the tools and context for its routine.
+427|App roles
+428|App screens
+429|Explore in Figma
+430|Scroll the screen to explore the dashboard
+431|Projects
+432|Figma file
+433|PRODUCT ECOSYSTEM
+434|An entire operation.
+435|One connected experience.
+436|From management to the field. From tracking to customers. A vehicle-protection ecosystem connecting an ERP, apps and a shared design language.
+437|Enter the ecosystem
+438|One brand. Different touchpoints.
+439|CONTEXT
+440|Protection and tracking
+441|SCOPE
+442|DISCIPLINES
+443|Brand
+444|THINKING IN SYSTEMS
+445|The challenge did not fit
+446|on a single screen.
+447|Managers need the whole picture. Field teams need to act. Customers need to follow along. Designing this ecosystem means respecting these differences while keeping them connected.
+448|Operations, metrics and business rules.
+449|Field
+450|Schedule, service and equipment.
+451|Customer
+452|Vehicle, invoices and contracts.
+453|Sales
+454|A mobile perspective for consultants.
+455|CONSULTANT APP
+456|FROM OPERATIONS TO INTERFACES
+457|Four decisions structuring this project presentation.
+458|THE LANGUAGE UNDERNEATH
+459|Different products.
+460|The same DNA.
+461|Identity brings touchpoints together. The component library organizes what repeats: tables, fields, buttons, navigation and states.
+462|IDENTITY APPLIED TO THE PRODUCT
+463|The visual signature crosses management and apps. Each area's colors help distinguish contexts within the same family.
+464|PRODUCT TYPOGRAPHY
+465|A hierarchy of weights for metrics, forms and data reading.
+466|STATES WITH COLOR AND TEXT
+467|Open
+468|In progress
+469|Completed
+470|Meaning needs to stay readable beyond color.
+471|View original components and states
+472|PRODUCT THINKING
+473|More than adding screens.
+474|Designing relationships.
+475|This project's strength is its scope: thinking through operations, each role's context and a visual foundation that lets the whole ecosystem evolve.
+476|Architecture before detail
+477|The different areas need to make sense as a system before each interface can work on its own.
+478|Context defines the experience
+479|The technician's phone, the manager's dashboard and the customer's app call for different priorities.
+480|Consistency creates room to grow
+481|A shared library brings modules closer and reduces the need to reinvent patterns for each new area.
+482|EXPLORE THE PROJECT FILES
+483|Technician App
+484|User App
+485|FROM YOUR CHALLENGE TO THE BIG PICTURE
+486|Your next product
+487|can connect, too.
+488|Explore Oryon Legis
+489|TRY THE SPEAKING TIMER
+490|A pause in the speech.
+491|The context remains.
+492|A simulation of the time controls presented in the project. Start, pause or add a minute and watch the interface state respond.
+493|The number gives the exact time. The bar helps convey proportion. The label indicates whether the countdown is running or paused.
+494|Current speaker
+495|SIMULATION
+496|Time finished
+497|Speaking in progress
+498|Timer paused
+499|Time remaining
+500|Pause timer
+501|Start timer
+502|Pause
+503|Start
+504|Add one minute
+505|Reset timer
+506|FIVE INTERFACE MOMENTS
+507|The session changes.
+508|Reading stays clear.
+509|Choose a moment to explore the screen and the design decision behind it.
+510|Session moments
+511|Previous moment
+512|Next moment
+513|Click to enlarge the original interface
+514|An entire session.
+515|Every decision in its place.
+516|Attendance, agenda, votes and speaking time. An interface that makes the different moments of a legislative session easier to locate and follow.
+517|Explore the session
+518|Each person's state.
+519|The entire session at a glance.
+520|Legislative sessions
+521|DELIVERABLE
+522|interface flows
+523|ATTENTION TO WHAT MATTERS
+524|Many things happening.
+525|One shared context.
+526|A session combines people, stages, choices and time. The interface challenge is to make them visible without making every change feel like a different system.
+527|Guide
+528|Keep the agenda and session controls close.
+529|Participate
+530|Give actions context and explicit labels.
+531|Connect individual states with the overall picture.
+532|STATE MEETS ACTION
+533|The next step
+534|needs to be recognizable.
+535|In attendance confirmation, the question, identity and button appear in the same context. The interface explains what is being requested before asking for an action.
+536|A direct question
+537|Visible identity
+538|A named action
+539|DECISIONS & EVOLUTION
+540|Consistency for guiding.
+541|Clarity for participating.
+542|The project brings the agenda, participation and monitoring together in a shared interface language.
+543|A structure that stays
+544|Side controls and the header keep reference points as the main task changes.
+545|Meaningful states
+546|Color, text and counts complement each other in attendance and voting views.
+547|Validation opportunities
+548|Check understanding of vote confirmation, connection recovery and result visibility with people involved in the process.
+549|ANOTHER SIDE OF ORYON
+550|Also explore
+551|the full ecosystem.
+552|Explore the original file
+553|FROM PLAN TO INTERFACE
+554|Every screen has a reason.
+555|Explore the stages and artifacts behind the project.
+556|Project stages
+557|Design decision
+558|Back to the start
+559|Next stage
+560|Enlarge: 
+561|THE GAME JOURNEY
+562|From wanting to play
+563|to your next time slot.
+564|Pause flow
+565|Play flow
+566|Guided flow
+567|WHY THIS WAY?
+568|Click the screen to enlarge
+569|Less back-and-forth.
+570|More play.
+571|A mobile experience for discovering sports courts, choosing a time slot and organizing your next game.
+572|Explore the experience
+573|See the process
+574|PRODUCT
+575|Sports booking
+576|DELIVERABLES
+577|prototyping
+578|DESIGN
+579|Choose your time
+580|One connected journey
+581|THE STARTING POINT
+582|The game starts before
+583|you step on the court.
+584|Choosing a venue takes more than a good photo: sport, location, amenities, availability and price need to work together.
+585|Playhub organizes those decisions into a journey, connecting players with the people managing the arena.
+586|VISUAL CONSISTENCY
+587|Energy in color.
+588|Clarity in the interface.
+589|Colors and typography documented in the original project guide.
+590|Actions and selections
+591|Supporting surfaces
+592|Neutral surfaces
+593|Text and information
+594|Green connects the brand with fields, nature and vitality. Color supports actions without competing with booking information.
+595|Enlarge typography guide
+596|hierarchy & spacing
+597|The venue is part of the game, too.
+598|THE OTHER SIDE OF THE JOURNEY
+599|Good for players.
+600|Clear for managers.
+601|The administrative module brings together booking requests, daily events and venue information. Operations become part of the same product vision.
+602|Requests
+603|Calendar
+604|Venue
+605|TAKEAWAYS & NEXT STEPS
+606|One connected flow.
+607|Room to evolve.
+608|The material documents the UX/UI proposal and its screens. The next steps are validation opportunities, without claiming usage results.
+609|Guide the decision
+610|Discovery, availability and review answer different questions within the same booking.
+611|Validate with players and managers
+612|Test understanding of time slots, court selection and error recovery in booking scenarios.
+613|Refine product states
+614|Check consistency between totals and CTAs, payment confirmation, unavailability and cancellation before implementation.
+615|FROM THE NEXT GAME TO THE NEXT PROJECT
+616|Shall we create something
+617|that connects people?
+618|Ideas that moved
+619|beyond the sketch.
+620|A look at the products, interfaces and experiences I have been designing. Pick a project to take a closer look.
+621|Fries to share
+622|Burger
+623|Juice jug
+624|You
+625|en-US
+626|TRY THE RULE
+627|Ordering together does not mean
+628|paying equally.
+629|A simulation of per-item splitting. Choose who consumed each item and watch the bill change.
+630|The example table
+631|Reset simulation
+632|Individual item
+633|Every item needs at least one person. Illustrative amounts, no real payments.
+634|YOUR SHARE
+635|Table total
+636|The shares add up to the total.
+637|FROM RULE TO PRODUCT
+638|One simple rule.
+639|Many design decisions.
+640|The process presented through the documented concept, components and screens.
+641|THE SHARED JOURNEY
+642|From the first person
+643|to the final review.
+644|THE DECISION BEHIND IT
+645|An item can be individual or shared
+646|One item
+647|Individual
+648|Shared
+649|Click to enlarge the original screen
+650|ONE LANGUAGE, TWO THEMES
+651|The same bill.
+652|A different light.
+653|The documentation defines light and dark variants. Red, orange and neutral surfaces organize the identity and product states.
+654|Open interface guide
+655|Montserrat, text hierarchy, components and documented states keep the experience consistent.
+656|Product preview theme
+657|Light
+658|Dark
+659|Original project variants
+660|Good company.
+661|A shared bill.
+662|An experience for bringing friends together, organizing orders and understanding each person's share. Without turning the bill into another complicated conversation.
+663|Try splitting the bill
+664|Group expenses
+665|components
+666|One table.
+667|Everyone with their own share.
+668|THE CHALLENGE
+669|The bill is collective.
+670|Consumption is not always shared.
+671|One person orders a meal, others share a dish, and someone only has juice. Dividing everything equally simplifies the math but ignores what each person consumed.
+672|RachAqui proposes a shared room, with items linked to participants and individual totals visible throughout the gathering.
+673|Clarity in the split.
+674|Confidence to move forward.
+675|The screens document the interface proposal. Next steps are validation opportunities without claiming unmeasured usage results.
+676|A bill with context
+677|Participants and items need to remain connected across every perspective of the room.
+678|Precision before closing
+679|Validate rounding, extras, participant changes and consistency between totals and individual shares.
+680|From prototype to operation
+681|Test host permissions, participant departure and closing confirmations before evolving payments and integrations.
+682|ANOTHER EXPERIENCE TO EXPLORE
+683|From a shared table
+684|to the next game.
+685|Discover Playhub

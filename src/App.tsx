@@ -7,8 +7,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import ClickPop from "./components/commun/ClickPop";
 import MusicPlayer from "./components/commun/MusicPlayer";
 
+const Portfolio=lazy(()=>import("./pages/Portfolio"));
 const Playhub=lazy(()=>import("./pages/Playhub"));
 const Rachaqui=lazy(()=>import("./pages/Rachaqui"));
 const Oryon=lazy(()=>import("./pages/Oryon"));
@@ -29,6 +31,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/projects/playhub" element={<Playhub />} />
             <Route path="/projects/rachaqui" element={<Rachaqui />} />
             <Route path="/projects/oryon" element={<Oryon />} />
@@ -39,6 +42,7 @@ export default function App() {
         </main>
         <Footer />
         <MusicPlayer />
+        <ClickPop />
       </div>
     </Router>
     </HeroAccentProvider>
