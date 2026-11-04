@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <filter id="wash" x="-30%" y="-35%" width="160%" height="170%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".009 .013" numOctaves="3" seed="17" result="paper"/>
+      <feDisplacementMap in="SourceGraphic" in2="paper" scale="92" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <radialGradient id="red"><stop stop-color="#b81d0d" stop-opacity=".78"/><stop offset=".65" stop-color="#ce3624" stop-opacity=".46"/><stop offset="1" stop-color="#d64631" stop-opacity="0"/></radialGradient>
+    <radialGradient id="coral"><stop stop-color="#e95e40" stop-opacity=".64"/><stop offset="1" stop-color="#e95e40" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g filter="url(#wash)">
+    <ellipse cx="1480" cy="165" rx="610" ry="430" fill="url(#red)"/>
+    <ellipse cx="1240" cy="860" rx="750" ry="380" fill="url(#red)"/>
+    <ellipse cx="800" cy="730" rx="510" ry="290" fill="url(#coral)"/>
+    <ellipse cx="1090" cy="460" rx="470" ry="550" fill="url(#red)" opacity=".44"/>
+  </g>
+</svg>

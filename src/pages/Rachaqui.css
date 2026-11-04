@@ -48,3 +48,171 @@
 @media(max-width:767px) { .rq-hero { margin:24px 0 37px;padding:31px 24px 20px;border-radius:23px;gap:17px;background-position:65% center; }.rq-hero::before { background:linear-gradient(155deg,#180302f5,#210303bd 50%,#35060340); }.rq-hero h1 { font-size:clamp(34px,9vw,52px); }.rq-hero-copy > p { font-size:12px; }.rq-hero .ph-hero-actions { gap:17px;flex-wrap:wrap; }.rq-hero .ph-primary-button { font-size:10px;padding:12px 14px; }.rq-hero .ph-secondary-link { font-size:10px; }.rq-hero-stage { height:437px;max-width:365px; }.rq-phone-home { width:164px;left:-2px;top:20px; }.rq-phone-room { width:160px;right:-2px;top:60px; }.rq-hero-receipt { left:0;bottom:10px;padding:12px;gap:9px; }.rq-hero-receipt > span { font-size:9px; }.rq-hero-receipt strong { font-size:10px; }.rq-journey .ph-journey-visual { padding:25px 10px;border-radius:17px; } }
 @media(max-width:380px) { .rq-hero { padding-inline:19px; }.rq-hero-stage { height:405px; }.rq-phone-home { width:148px;left:-3px; }.rq-phone-room { width:145px;right:-3px; }.rq-hero-receipt { padding:10px;gap:8px; }.rq-hero-receipt strong { font-size:9px; } }
 @media(prefers-reduced-motion:reduce) { .rq-product-theme::before { transition:none; } }
+
+/* Concept-led opening: artwork covers the complete header. */
+.rq-hero{min-height:560px;grid-template-columns:1fr 1.05fr;padding:40px 48px;background-size:cover;background-position:center;border-radius:24px}
+.rq-hero::before{background:linear-gradient(90deg,#190302bd 0%,#23030355 48%,transparent 80%)}
+.rq-hero h1{margin-top:0;color:#fff6ef}.rq-hero .ph-hero-actions{margin-top:32px}.rq-hero-stage{height:500px}.rq-phone-home{top:0;width:210px}.rq-phone-room{top:35px;width:208px}.rq-hero .rq-orbit{display:none}
+.rq-auth-tabs{display:flex;gap:5px;padding:4px;border-radius:30px;background:#fff5efed;color:#68564b}.rq-auth-tabs button{padding:10px 14px;min-height:40px;border-radius:25px;font-size:11px;cursor:pointer}.rq-auth-tabs button[aria-pressed=true]{background:#fff;color:#ac1404;box-shadow:0 2px 7px #0001}
+@media(max-width:1050px){.rq-hero{padding:35px 28px}.rq-hero-stage{height:440px}}
+@media(max-width:767px){.rq-hero{grid-template-columns:1fr;padding:35px 24px 15px;gap:28px}.rq-hero h1{font-size:clamp(38px,10vw,58px)}.rq-hero-stage{height:410px}.rq-phone-home{top:5px;width:160px}.rq-phone-room{top:40px;width:156px}.rq-hero::before{background:linear-gradient(150deg,#190302b0,transparent 85%)}}
+@media(max-width:380px){.rq-phone-home{width:145px}.rq-phone-room{width:142px}}
+
+.rachaqui-case .rq-hero {
+  width:100vw;
+  margin-inline:calc(50% - 50vw);
+  padding-inline:max(var(--page-gutter),calc((100vw - 1144px)/2));
+  border-radius:0;
+  border-inline:0;
+}
+
+.rachaqui-case { --rq-opening-offset:133px; }
+.rachaqui-case .ph-breadcrumb {
+  position:relative;
+  z-index:3;
+  line-height:16px;
+  color:#f1d5c9;
+}
+.rachaqui-case .rq-hero {
+  margin-top:calc(-1 * var(--rq-opening-offset));
+  padding-top:calc(40px + var(--rq-opening-offset));
+  border-top:0;
+}
+@media(max-width:767px) {
+  .rachaqui-case { --rq-opening-offset:131px; }
+  .rachaqui-case .rq-hero { padding-top:calc(35px + var(--rq-opening-offset)); }
+}
+
+/* Light theme uses pale editorial surfaces and dark, readable typography. */
+html:not(.dark) .rachaqui-case {
+  --ph-ink:#301d16;
+  --ph-muted:#62443a;
+  --ph-line:#e6bda9;
+  --ph-paper:#fffdfa;
+  --ph-surface:#fff;
+  --ph-soft:#ffe1d2;
+  --ph-green:#d43413;
+  --ph-green-text:#ac1404;
+  --ph-shadow:#9b2e1524;
+}
+html:not(.dark) .rachaqui-case .rq-hero {
+  --ph-ink:#30211b;--ph-muted:#69574e;--ph-line:#e8dcd3;--ph-green-text:#a52a12;
+  background-image:linear-gradient(100deg,#fffaf5fa 0%,#fff5edf5 28%,#ffe8dadb 44%,#efbd9e66 66%,#d77e4c1a 100%),url('../assets/projects/rachaqui/art/red-chrome-original.webp');
+}
+html:not(.dark) .rq-hero::before { background:none; }
+html:not(.dark) .rq-hero h1 { color:#30211b; }
+html:not(.dark) .rq-hero h1 em { color:#a52a12; }
+html:not(.dark) .rq-hero .ph-primary-button { background:#ac1404;border-color:#ac1404;color:#fff; }
+html:not(.dark) .rq-hero .ph-primary-button:hover { background:#8e1003;border-color:#8e1003; }
+html:not(.dark) .rq-hero .ph-secondary-link,
+html:not(.dark) .rachaqui-case .ph-breadcrumb { color:#65483b; }
+html:not(.dark) .rachaqui-case .rq-onboarding {
+  color:#301d16;border-color:#dc9f85;
+  background-image:linear-gradient(110deg,#fff3eaf5 0%,#ffd6c5e0 50%,#f5a18bbf 100%),url('../assets/projects/rachaqui/art/crimson-ribbons.webp');
+}
+html:not(.dark) .rq-onboarding::before { background:none; }
+html:not(.dark) .rq-onboarding .ph-kicker,
+html:not(.dark) .rq-onboarding-copy h2 em,
+html:not(.dark) .rq-onboarding-source,
+html:not(.dark) .rq-onboarding-steps button[aria-pressed=true] > span { color:#ac1404; }
+html:not(.dark) .rq-onboarding-copy > p,
+html:not(.dark) .rq-onboarding-copy > .rq-onboarding-hint,
+html:not(.dark) .rq-onboarding-stage-footer,
+html:not(.dark) .rq-onboarding-caption { color:#592d20; }
+html:not(.dark) .rq-onboarding-steps { border-color:#dca28b; }
+html:not(.dark) .rq-onboarding-steps button { color:#62443a;border-color:#dca28b; }
+html:not(.dark) .rq-onboarding-steps button[aria-pressed=true],
+html:not(.dark) .rq-onboarding-steps button:hover { color:#92230e; }
+html:not(.dark) .rq-onboarding :is(button,a):focus-visible { outline-color:#a52a12; }
+html:not(.dark) .rq-onboarding-device { box-shadow:0 25px 45px #68341b24,0 4px 10px #68341b18,inset 0 0 0 3px #201b18; }
+html:not(.dark) .rachaqui-case .rq-process-art {
+  background-image:linear-gradient(120deg,#ffe2ceec,#f6a18ce6),url('../assets/projects/rachaqui/art/red-chrome-original.webp');border-color:#d99476;
+}
+html:not(.dark) .rq-process-art::before { background:none; }
+html:not(.dark) .rq-process-art > span { color:#592d20; }
+html:not(.dark) .rq-process-art > i { color:#ac1404; }
+html:not(.dark) .rq-journey .ph-journey-visual {
+  background-image:linear-gradient(135deg,#ffe5d2ed,#f5a18bdb),url('../assets/projects/rachaqui/art/crimson-ribbons.webp');border:1px solid #d99476;
+}
+html:not(.dark) .rq-journey .ph-screen-caption { color:#592d20; }
+html:not(.dark) .rq-product-theme,
+html:not(.dark) .rq-product-theme.is-dark {
+  background-image:linear-gradient(135deg,#ffe5d2ed,#f5a18be6),url('../assets/projects/rachaqui/art/vermilion-loop.webp');border-color:#d99476;
+}
+html:not(.dark) .rq-product-theme::before,
+html:not(.dark) .rq-product-theme.is-dark::before { background:none; }
+html:not(.dark) .rq-product-theme > small,
+html:not(.dark) .rq-product-theme.is-dark > small { color:#592d20; }
+html:not(.dark) .rq-product-theme .rq-theme-controls,
+html:not(.dark) .rq-auth-tabs { background:#fffaf6;border:1px solid #e2cec0;color:#65483b; }
+
+.rq-hero-motion-control { display:inline-flex;align-items:center;gap:7px;min-height:40px;margin-top:15px;color:#f1d5c9;font-size:10px;cursor:pointer; }
+html:not(.dark) .rq-hero-motion-control { color:#65483b; }
+@media(min-width:768px) {
+  html:not(.dark) .rachaqui-case .ph-breadcrumb > a:last-child { color:#fff5ec;text-shadow:0 1px 5px #391006; }
+}
+@media(max-width:767px) {
+  html:not(.dark) .rachaqui-case .rq-hero { background-image:linear-gradient(155deg,#fffaf5f5 0%,#fff2e8e6 38%,#efbd9e80 70%,#d77e4c33 100%),url('../assets/projects/rachaqui/art/red-chrome-original.webp'); }
+}
+
+/* A real shared-table setting, from the top edge through the full opening. */
+.rachaqui-case .rq-hero {
+  background-image:linear-gradient(95deg,#240805ed 0%,#34100bd6 35%,#6f100d66 65%,#8f160f33 100%),url('../assets/projects/rachaqui/art/red-watercolor-overlay.svg'),url('../assets/projects/rachaqui/art/restaurant-people-table-close.webp');
+  background-position:center 55%;
+}
+html:not(.dark) .rachaqui-case .rq-hero {
+  background-image:linear-gradient(95deg,#fff8f3f5 0%,#fff1e9eb 30%,#ffe4dba6 48%,#ef9c8933 72%,#d749391a 100%),url('../assets/projects/rachaqui/art/red-watercolor-overlay.svg'),url('../assets/projects/rachaqui/art/restaurant-people-table-close.webp');
+}
+html:not(.dark) .rachaqui-case .ph-breadcrumb > a:last-child { color:#65483b;text-shadow:none;background:#fff8f0e6;padding:0 10px;border:0;border-radius:22px;box-shadow:0 0 0 5px #fff8f0e6; }
+.rq-hero-stage .ph-phone-position { animation:rq-phone-float 6.8s ease-in-out infinite;will-change:translate; }
+.rq-hero-stage .rq-phone-home { animation-delay:-1.1s; }
+.rq-hero-stage .rq-phone-room { animation-duration:7.7s;animation-delay:-3.6s; }
+.rq-hero-stage .ph-phone-position:is(:hover,:focus-within),
+.rq-hero-stage.is-paused .ph-phone-position { animation-play-state:paused; }
+.rq-hero-stage .ph-phone { transform:none!important;box-shadow:inset 0 0 0 1px #000,18px 32px 38px #35170b55,3px 8px 12px #35170b2b; }
+.dark .rq-hero-stage .ph-phone { box-shadow:inset 0 0 0 1px #000,18px 32px 38px #0009,3px 8px 12px #0005; }
+@keyframes rq-phone-float { 0%,100% { translate:0 0; } 50% { translate:2px -13px; } }
+@media(max-width:767px) {
+  .rachaqui-case .rq-hero { background-position:85% center; }
+  html:not(.dark) .rachaqui-case .rq-hero { background-image:linear-gradient(180deg,#fff8f3fa 0%,#fff1e9f5 33%,#ffe4dbb3 51%,#df726126 100%),url('../assets/projects/rachaqui/art/red-watercolor-overlay.svg'),url('../assets/projects/rachaqui/art/restaurant-people-table-close.webp'); }
+  html:not(.dark) .rachaqui-case .ph-breadcrumb > a:last-child { padding:0;border:0;background:none;box-shadow:none; }
+}
+@media(prefers-reduced-motion:reduce) { .rq-hero-stage .ph-phone-position { animation:none;will-change:auto; } }
+
+/* The case shares the home's sketchbook details without changing product screens. */
+.rq-hero-stage .ph-phone>video{display:block;width:100%;height:auto;aspect-ratio:430/932;background:#fff}
+.rq-case-footer{position:relative;isolation:isolate}
+.rachaqui-case .ph-kicker{font-family:Kalam,'Segoe Print',cursive;font-size:12px;letter-spacing:.07em}
+.rachaqui-case .ph-section-heading h2,.rachaqui-case .rq-premise h2,.rachaqui-case .rq-onboarding-copy h2,.rachaqui-case .rq-system h2,.rachaqui-case .ph-takeaways h2,.rachaqui-case .rq-case-footer h2{font-family:Kalam,'Segoe Print',cursive;font-weight:700;letter-spacing:-.035em;line-height:1.16;rotate:-.6deg}
+.rachaqui-case .ph-section-heading h2::after,.rachaqui-case .rq-system h2::after{content:'';display:block;width:190px;max-width:70%;height:9px;margin-top:6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='10' viewBox='0 0 220 10'%3E%3Cpath d='M2 5Q71 1 145 4T217 3M17 8Q91 4 201 7' fill='none' stroke='%23ca3918' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.rq-experience-context h3{font-family:Kalam,'Segoe Print',cursive;font-weight:700;letter-spacing:-.035em;rotate:-.7deg}
+.rq-process-step h3 strong{font-family:Kalam,'Segoe Print',cursive;font-size:19px}
+.rq-onboarding-steps strong{font-family:Kalam,'Segoe Print',cursive;font-size:15px}
+.rachaqui-case .ph-primary-button{font-family:Kalam,'Segoe Print',cursive;font-size:15px;border-radius:4px 9px 5px 8px;rotate:-.6deg;box-shadow:2px 3px 0 #7a25172b}
+.rq-hero-motion-control{font-family:Kalam,'Segoe Print',cursive;font-size:14px;gap:8px}
+.rq-auth-tabs{border-radius:5px 10px 6px 8px;rotate:-.6deg}
+.rq-auth-tabs button{font-family:Kalam,'Segoe Print',cursive;font-size:13px;border-radius:4px 8px 5px 7px}
+@media(max-width:767px){.rachaqui-case .ph-section-heading h2,.rachaqui-case .rq-system h2{font-size:31px}.rq-process-step h3 strong{font-size:17px}.rachaqui-case .rq-hero .ph-primary-button{font-size:13px}}
+
+/* The final invitation takes on PlayHub's green and its football setting. */
+.rachaqui-case .rq-case-footer{
+  --ph-ink:#f5ffef;--ph-muted:#d3ebcd;--ph-line:#78bd7a73;--ph-green:#43bc5c;--ph-green-text:#bcf3a9;--ph-shadow:#00160766;
+  min-height:315px;padding:48px;overflow:hidden;
+  background-color:#0b3619;
+  background-image:linear-gradient(95deg,#083319f2 0%,#09391bd9 37%,#0b411b66 65%,#0b36192b 100%),url('../assets/projects/rachaqui/art/playhub-stadium.webp');
+  background-position:center 58%;background-size:cover;
+  color:var(--ph-ink);border-color:var(--ph-line);
+}
+.rachaqui-case .rq-case-footer h2{color:#f5ffef}
+.rachaqui-case .rq-case-footer h2 em{color:#bcf3a9}
+.rachaqui-case .rq-case-footer .ph-kicker{color:#c4edbb}
+.rachaqui-case .rq-case-footer .ph-primary-button{background:#43bc5c;color:#062c11;border-color:#76df8a;box-shadow:2px 3px 0 #001b0873}
+.rachaqui-case .rq-case-footer .ph-primary-button:hover{background:#6be487;color:#062c11;border-color:#b2f6c0}
+.rachaqui-case .rq-case-footer .ph-primary-button:focus-visible{outline-color:#d6ffbf}
+@media(max-width:767px){
+  .rachaqui-case .rq-case-footer{min-height:320px;padding:34px 24px;background-image:linear-gradient(100deg,#083319f2 0%,#09391bcf 46%,#0b411b66 100%),url('../assets/projects/rachaqui/art/playhub-stadium.webp');background-position:75% center;background-size:cover}
+}
+
+/* Keep the painted/photo backgrounds free of permanent outline frames. */
+.rachaqui-case :is(.rq-onboarding,.rq-experience-stage,.rq-process-art,.rq-product-theme,.rq-case-footer){border:0}
+html:not(.dark) .rachaqui-case .rq-experience-stage{box-shadow:0 14px 40px #9b2e1514}

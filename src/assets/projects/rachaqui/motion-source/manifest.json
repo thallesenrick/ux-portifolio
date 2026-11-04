@@ -1,0 +1,39 @@
+{
+  "fileKey": "wDBg6nWX0nvDxrwz6CsSJH",
+  "width": 430,
+  "height": 932,
+  "frameDelay": 20,
+  "transitionFrames": 48,
+  "holdFrames": 65,
+  "flows": {
+    "split": [
+      {
+        "file": "split-1.png",
+        "node": "2:2512",
+        "sha256": "6aab4b18d7bff7ced3509e20c0ac8bf750e6e6f1b54eb9d10c0ae36afd18db90"
+      },
+      {
+        "file": "split-2.png",
+        "node": "2:2617",
+        "sha256": "61bda6a904eb8324af92879e8dc3ae9e3e77bcc3536a8f6b79c85217a244f299"
+      },
+      {
+        "file": "split-4.png",
+        "node": "2:2827",
+        "sha256": "bdf901d38d5c019cbc64652a1cc4cafd2fa1514712e2c01f9522ca51f744c73e"
+      }
+    ],
+    "table": [
+      {
+        "file": "table-1.png",
+        "node": "2:3254",
+        "sha256": "fe0d4bfc8dbe20223ab56e41df9ce6afe173e45e99d1f9370fd3cf39afefdb52"
+      },
+      {
+        "file": "table-2.png",
+        "node": "2:3356",
+        "sha256": "c642680c205ad48d598d12d4543d3035c1731c09a5116d14536de72504e07fc0"
+      }
+    ]
+  }
+}

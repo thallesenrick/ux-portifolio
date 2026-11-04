@@ -74,7 +74,7 @@ export default function RachaquiOnboarding() {
         </button>)}
       </div>
       <p className="rq-onboarding-hint">{ui.hint}</p>
-      <a className="rq-onboarding-source" href="https://www.figma.com/design/zuvKCtfqxVAK8ycohBEYh9/RachAqui?node-id=132-932" target="_blank" rel="noopener noreferrer">{ui.original}<ArrowUpRight size={15} /></a>
+      {/* Temporarily hidden: <a className="rq-onboarding-source" href="https://www.figma.com/design/zuvKCtfqxVAK8ycohBEYh9/RachAqui?node-id=132-932" target="_blank" rel="noopener noreferrer">{ui.original}<ArrowUpRight size={15} /></a> */}
     </div>
     <div className="rq-onboarding-stage">
       <div className="rq-onboarding-device" id="rq-onboarding-preview" role="group" aria-label={ui.phone} tabIndex={0} onKeyDown={handleKeys}>

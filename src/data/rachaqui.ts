@@ -1,3 +1,5 @@
+import profileLight from "../assets/projects/rachaqui/profile-light.png";
+import profileDark from "../assets/projects/rachaqui/profile-dark.png";
 import home from "../assets/projects/rachaqui/home.png";
 import create from "../assets/projects/rachaqui/create.png";
 import room from "../assets/projects/rachaqui/room.png";
@@ -9,15 +11,21 @@ import system from "../assets/projects/rachaqui/system.png";
 import loginLight from "../assets/projects/rachaqui/login-light.png";
 import loginDark from "../assets/projects/rachaqui/login-dark.png";
 import {copy,type CaseScreen} from "./case-study";
-export const rachaquiFigma="https://www.figma.com/design/zuvKCtfqxVAK8ycohBEYh9/RachAqui?node-id=1-2";
+export const rachaquiFigma="https://www.figma.com/design/wDBg6nWX0nvDxrwz6CsSJH/Untitled?node-id=0-1";
 const phone=(src:string,pt:string,en:string):CaseScreen=>({src,label:copy(pt,en),width:430,height:932});
 export const rachaquiScreens={
+  splitMotion:{src:"/rachaqui/motion/split.gif?source=5-492-motion-v4",label:copy("Visão da mesa, consumo individual e pedidos — telas originais animadas","Table overview, individual consumption and orders — animated original screens"),width:430,height:932},
+  tableMotion:{src:"/rachaqui/motion/table.gif?source=5-493-motion-v2",label:copy("Conferência da mesa e dos pedidos — demonstração animada","Table and order review — animated demo"),width:430,height:932},
+  splitPoster:{src:"/rachaqui/motion/split-poster.png?source=5-492-motion-v4",label:copy("Visão da mesa — tela original","Table overview — original screen"),width:430,height:932},
+  tablePoster:{src:"/rachaqui/motion/table-poster.png?source=5-493-motion-v2",label:copy("Conferência da mesa e dos pedidos","Table and order review"),width:430,height:932},
   home:phone(home,"Início e atividades recentes","Home and recent activity"),
   create:phone(create,"Criação de uma sala","Creating a room"),
   room:phone(room,"Visão do total da mesa","Shared table total"),
   individual:phone(individual,"Visão do consumo individual","Individual consumption view"),
   orders:phone(orders,"Participantes e pedidos recentes","Participants and recent orders"),
   bill:phone(bill,"Revisão da comanda","Bill review"),
+  profileLight:phone(profileLight,"Personalização em tema claro","Personalization in light mode"),
+  profileDark:phone(profileDark,"Personalização em tema escuro","Personalization in dark mode"),
   loginLight:phone(loginLight,"Acesso em tema claro","Sign-in in light mode"),
   loginDark:phone(loginDark,"Acesso em tema escuro","Sign-in in dark mode"),
   guide:{src:guide,label:copy("Conceito e regras do produto","Product concept and rules"),width:595,height:713},
