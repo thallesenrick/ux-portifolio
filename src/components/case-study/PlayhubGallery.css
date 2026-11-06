@@ -1,0 +1,7 @@
+﻿/* Reuse the RachAqui gallery layout with Playhub's own palette. */
+.rq-gallery-dialog.ph-gallery-dialog { --rg-paper:#fbf9f2;--rg-surface:#fffef8;--rg-ink:#243b2b;--rg-muted:#63705f;--rg-line:#d9e0cd;--rg-soft:#e9efdf;--rg-accent:#27653a; }
+.dark .rq-gallery-dialog.ph-gallery-dialog { --rg-paper:#18221a;--rg-surface:#233127;--rg-ink:#f1f0df;--rg-muted:#b7c3ac;--rg-line:#42533c;--rg-soft:#293d2c;--rg-accent:#a1d89c; }
+.ph-gallery-dialog .rq-gallery-detail-stage > video { display:block;max-width:100%;width:auto;max-height:580px;height:auto;object-fit:contain;box-shadow:0 15px 35px #17251b22;border-radius:4px; }
+.ph-gallery-dialog .rq-gallery-detail-stage.is-zoomed > video { max-height:none;max-width:100%;width:min(786px,100%); }
+@media(max-width:767px) { .ph-gallery-dialog .rq-gallery-detail-stage > video { max-height:65dvh; } }
+html:not(.dark) .rq-gallery-dialog.ph-gallery-dialog { --rg-muted:#63705f;--rg-line:#d9e0cd;--rg-soft:#e9efdf;--rg-accent:#27653a; }

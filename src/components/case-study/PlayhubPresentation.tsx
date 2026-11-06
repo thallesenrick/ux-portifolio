@@ -1,0 +1,39 @@
+﻿import { useState } from "react";
+import { CalendarDays, MapPin, Pause, Play, Users, ArrowUpRight, Download } from "lucide-react";
+import { useI18n } from "../../lib/i18n-context";
+import { CaseReveal } from "./CaseMedia";
+import PlayhubMotionPhone from "./PlayhubMotionPhone";
+import { playhubMotion, playhubOriginals } from "../../data/playhub-originals";
+import type { CaseScreen } from "../../data/case-study";
+import friends from "../../assets/projects/playhub/art/beach-tennis-friends.webp";
+
+export function PlayhubHeroFeatures() {
+  const {lang}=useI18n();
+  const labels={pt:["Encontre sua quadra","Escolha seu horário","Reúna sua turma"],en:["Find your court","Choose your time","Bring your friends"],es:["Encuentra tu cancha","Elige tu horario","Reúne a tus amigos"]}[lang];
+  return <div className="ph-ref-features">{[MapPin,CalendarDays,Users].map((Icon,index)=><div key={labels[index]}><Icon size={21} strokeWidth={1.5} /><span>{labels[index]}</span></div>)}</div>;
+}
+
+export function PlayhubSportStory() {
+  const {lang}=useI18n();
+  const text={pt:["O MELHOR DO JOGO É ESTAR JUNTO.","Uma quadra. Sua turma.","Mais histórias para contar.","Beach tennis, futebol ou vôlei. O próximo encontro começa com um espaço e um horário que funcionam para todo mundo."],en:["THE BEST PART IS PLAYING TOGETHER.","One court. Your people.","More stories to share.","Beach tennis, football or volleyball. The next gathering starts with a place and a time that work for everyone."],es:["LO MEJOR ES JUGAR JUNTOS.","Una cancha. Tu gente.","Más historias para compartir.","Beach tennis, fútbol o voleibol. El próximo encuentro empieza con un lugar y un horario que funcionen para todos."]}[lang];
+  return <CaseReveal className="ph-ref-sport-story"><img src={friends} width="1536" height="1024" alt={{pt:"Amigos se divertindo em uma partida de beach tennis na quadra de areia.",en:"Friends enjoying a beach tennis game on a sand court.",es:"Amigos disfrutando de un partido de beach tennis."}[lang]} loading="lazy" /><div><span className="ph-kicker">{text[0]}</span><h2>{text[1]}<br /><em>{text[2]}</em></h2><p>{text[3]}</p></div></CaseReveal>;
+}
+
+export function PlayhubExperience({onOpen}:{onOpen:(screen:CaseScreen)=>void}) {
+  const {lang}=useI18n();
+  const [playing,setPlaying]=useState(true),[active,setActive]=useState(0),[seek,setSeek]=useState<{index:number;request:number}>();
+  const titles={pt:["Encontrar uma quadra","Conhecer a arena","Escolher data e horário","Revisar o pagamento","Conferir a reserva","Acompanhar na agenda"],en:["Find a court","Explore the venue","Choose date and time","Review payment","Check the booking","Track in the calendar"],es:["Encontrar una cancha","Conocer la arena","Elegir fecha y hora","Revisar el pago","Comprobar la reserva","Consultar la agenda"]}[lang];
+  const copy={pt:["A EXPERIÊNCIA, EM MOVIMENTO","Do próximo horário","ao próximo jogo.","Descubra a arena, escolha quando jogar e confira os detalhes. Uma jornada para tirar os planos do grupo e levar todo mundo para a quadra.","Pausar animação","Reproduzir animação","Baixar GIF da reserva"],en:["THE EXPERIENCE, IN MOTION","From the next time slot","to the next game.","Explore the venue, choose when to play and review the details. A journey that gets your group out of the chat and onto the court.","Pause animation","Play animation","Download booking GIF"],es:["LA EXPERIENCIA, EN MOVIMIENTO","Del próximo horario","al próximo partido.","Descubre la arena, elige cuándo jugar y revisa los detalles. Una experiencia que lleva a tu grupo del chat a la cancha.","Pausar animación","Reproducir animación","Descargar GIF de la reserva"]}[lang];
+  return <section id="ph-motion" className="ph-section ph-ref-experience"><div className="ph-ref-experience-copy"><span className="ph-kicker">{copy[0]}</span><h2>{copy[1]}<br /><em>{copy[2]}</em></h2><p>{copy[3]}</p><ol className="ph-ref-motion-steps">{titles.map((title,index)=><li key={title}><button type="button" aria-pressed={active===index} onClick={()=>{setPlaying(false);setActive(index);setSeek(previous=>({index,request:(previous?.request ?? 0)+1}));}}><span>0{index+1}</span>{title}<ArrowUpRight size={14} /></button></li>)}</ol><div className="ph-ref-motion-actions"><button type="button" onClick={()=>setPlaying(value=>!value)} aria-pressed={playing}>{playing ? <Pause size={15} /> : <Play size={15} />}{playing ? copy[4] : copy[5]}</button><a href={playhubMotion.booking.gif} download><Download size={14} />{copy[6]}</a></div></div><div className="ph-ref-experience-art"><PlayhubMotionPhone sequence={playhubMotion.booking} playing={playing} seek={seek} onStepChange={setActive} onOpen={onOpen} /><span className="ph-ref-phone-label">PLAYHUB / 01 — 06</span></div></section>;
+}
+
+export function PlayhubOriginalGallery({onOpen}:{onOpen:(screen:CaseScreen)=>void}) {
+  const {lang}=useI18n();
+  return <section className="ph-section ph-ref-gallery"><div className="ph-section-heading"><div><span className="ph-kicker">PLAYHUB / {lang==="pt" ? "AS TELAS DO PROJETO" : lang==="es" ? "LAS PANTALLAS DEL PROYECTO" : "THE PROJECT SCREENS"}</span><h2>{lang==="pt" ? "Cada detalhe, no seu lugar." : lang==="es" ? "Cada detalle, en su lugar." : "Every detail in its place."}</h2></div><p>{lang==="pt" ? "Explore as 24 telas e wireframes originais." : lang==="es" ? "Explora las 24 pantallas y wireframes originales." : "Explore the 24 original screens and wireframes."}</p></div><div className="ph-ref-screen-strip">{playhubOriginals.map(screen=><button key={screen.id} type="button" onClick={()=>onOpen(screen)}><img src={screen.src} alt={screen.label[lang]} width={screen.width} height={screen.height} loading="lazy" /><span>{screen.label[lang]}</span></button>)}</div><div className="ph-ref-gif-links">{Object.entries(playhubMotion).map(([key,sequence],index)=><a key={key} href={sequence.gif} download><Download size={15} />{{pt:["GIF de entrada","GIF da reserva","GIF de pagamento"],en:["Onboarding GIF","Booking GIF","Payment GIF"],es:["GIF de entrada","GIF de reserva","GIF de pago"]}[lang][index]}</a>)}</div></section>;
+}
+
+export function PlayhubPayment({onOpen}:{onOpen:(screen:CaseScreen)=>void}) {
+  const {lang}=useI18n();const [playing,setPlaying]=useState(true);
+  const text={pt:["CADA ESCOLHA, COM CLAREZA","Tudo pronto","para entrar em quadra.","Pix, cartão ou pagamento no local. O resumo reúne a arena, o horário e os valores antes da confirmação.","Pausar animação de pagamento","Reproduzir animação de pagamento","Baixar GIF de pagamento"],en:["CLARITY IN EVERY CHOICE","All set","to step onto the court.","Pix, card or payment at the venue. The summary brings together the court, time and price before confirmation.","Pause payment animation","Play payment animation","Download payment GIF"],es:["CADA ELECCIÓN, CON CLARIDAD","Todo listo","para entrar a la cancha.","Pix, tarjeta o pago en el lugar. El resumen reúne la arena, el horario y el precio antes de confirmar.","Pausar animación de pago","Reproducir animación de pago","Descargar GIF de pago"]}[lang];
+  return <section className="ph-section ph-ref-payment"><div className="ph-ref-payment-art"><PlayhubMotionPhone sequence={playhubMotion.payment} playing={playing} onOpen={onOpen} /></div><div><span className="ph-kicker">{text[0]}</span><h2>{text[1]}<br /><em>{text[2]}</em></h2><p>{text[3]}</p><div className="ph-ref-payment-methods">{["Pix",lang==="pt" ? "Cartão" : lang==="es" ? "Tarjeta" : "Card",lang==="pt" ? "No local" : lang==="es" ? "En el lugar" : "At the venue"].map(label=><span key={label}>{label}</span>)}</div><div className="ph-ref-motion-actions"><button type="button" onClick={()=>setPlaying(value=>!value)} aria-pressed={playing}>{playing ? <Pause size={15} /> : <Play size={15} />}{text[playing ? 4 : 5]}</button><a href={playhubMotion.payment.gif} download><Download size={14} />{text[6]}</a></div></div></section>;
+}

@@ -15,7 +15,7 @@ import { HERO_INK_IMPACT, sampleHeroIntro, vividColor } from "../../lib/hero-int
 import type { RGB } from "../../lib/hero-accent-context";
 import HeroPortrait from "./HeroPortrait";
 import HeroInkDrop from "./HeroInkDrop";
-import RGBControls from "./RGBControls";
+import ColorSlider from "./ColorSlider";
 import "./Hero.css";
 
 
@@ -139,7 +139,7 @@ export default function Hero() {
         <nav className="hero-socials" aria-label={pt ? "Redes sociais" : (lang === "es" ? spanish("Social networks") : "Social networks")}>
           <RevealSurface boundary={boundary} heroRef={heroRef} className="hero-social-reveal"><div className="hero-social-block">{[{name:"LinkedIn",Icon:FaLinkedinIn,href:"https://www.linkedin.com/in/thallesenrick/"},{name:"GitHub",Icon:FaGithub,href:"https://github.com/thallesenrick"},{name:"WhatsApp",Icon:FaWhatsapp,href:"https://wa.me/5588999463821"},{name:"Behance",Icon:FaBehance,href:import.meta.env.VITE_BEHANCE_URL || "https://www.behance.net/"}].map(({name,Icon,href})=><a key={name} href={href} target="_blank" rel="noopener noreferrer" aria-label={name} title={name}><Icon /></a>)}</div></RevealSurface>
         </nav>
-        <div className="hero-controls-dock"><RevealSurface boundary={boundary} heroRef={heroRef} className="hero-color-reveal" normalChildren={<RGBControls onInteract={stopIntro} />}><RGBControls onInteract={stopIntro} impactRef={impactRef} /></RevealSurface><div id="hero-music-anchor" /></div>
+        <div className="hero-controls-dock"><RevealSurface boundary={boundary} heroRef={heroRef} className="hero-color-reveal" normalChildren={<ColorSlider onInteract={stopIntro} />}><ColorSlider onInteract={stopIntro} impactRef={impactRef} /></RevealSurface><div id="hero-music-anchor" /></div>
       </motion.div>
     </div>
     <svg className="sketch-landscape" viewBox="0 0 1440 130" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M-10 12C32 110 111 85 160 83C219 80 226 90 273 108C324 130 354 75 414 94C461 109 492 92 547 110C617 133 650 99 714 118C760 131 815 106 875 115" /><path d="M-5 123L36 103L53 110L78 92L100 103L127 96L166 112L221 116L260 128L306 124L350 132" /></svg>

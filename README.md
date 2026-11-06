@@ -80,7 +80,6 @@ As versões abaixo são as **resolvidas no `package-lock.json`**. O `package.jso
 | [StPageFlip](https://github.com/Nodlik/StPageFlip), pacote `page-flip` | `2.0.7` | Dobra, sombras e virada de páginas da revista |
 | [Lucide React](https://lucide.dev/) | `0.545.0` | Ícones de interface |
 | [React Icons](https://react-icons.github.io/react-icons/) | `5.5.0` | Símbolos das redes sociais |
-| [GSAP](https://gsap.com/) | `3.13.0` | Dependência disponível para animações; sem importação direta no código atual |
 
 **React Bits** também aparece como código local em [`src/components/react-bits/`](src/components/react-bits/), incluindo a malha visual da hero. Esses componentes não são uma dependência npm versionada neste projeto.
 
@@ -142,6 +141,7 @@ Variáveis com prefixo `VITE_` ficam acessíveis no frontend e devem conter apen
 | `npm run build` | Executa a verificação de tipos e gera `dist/` |
 | `npm run preview` | Serve o build localmente para revisão |
 | `npm run lint` | Executa o ESLint |
+| `npm test` | Verifica o espectro de cores, a continuidade da anima??o e a divis?o de despesas |
 
 ## Rotas
 

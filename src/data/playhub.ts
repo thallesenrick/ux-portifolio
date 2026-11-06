@@ -1,16 +1,16 @@
-import home from "../assets/projects/playhub/home.png";
-import details from "../assets/projects/playhub/details.png";
-import booking from "../assets/projects/playhub/booking.png";
-import payment from "../assets/projects/playhub/payment.png";
-import calendar from "../assets/projects/playhub/calendar.png";
-import admin from "../assets/projects/playhub/admin.png";
-import wireframe from "../assets/projects/playhub/wireframe.png";
+import home from "../assets/projects/playhub/originals/screen-38.png";
+import details from "../assets/projects/playhub/originals/screen-13.png";
+import booking from "../assets/projects/playhub/originals/screen-12.png";
+import payment from "../assets/projects/playhub/originals/screen-18.png";
+import calendar from "../assets/projects/playhub/originals/screen-39.png";
+import admin from "../assets/projects/playhub/originals/screen-17.png";
+import wireframe from "../assets/projects/playhub/originals/screen-22.png";
 import guide from "../assets/projects/playhub/guide.png";
 import typography from "../assets/projects/playhub/type.png";
 
 import { copy } from "./case-study";
 export type { CaseCopy } from "./case-study";
-export const playhubFigma="https://www.figma.com/design/vPb8lhBF3cTKhrp9dsGwq5/Playhub?node-id=0-1";
+export const playhubFigma="https://www.figma.com/design/v8y0LZqC6qd7iCCemVLFnF/Untitled";
 export const playhubScreens={
   home:{src:home,label:copy("Descoberta de quadras","Court discovery")},
   details:{src:details,label:copy("Detalhes da arena","Arena details")},
@@ -23,13 +23,6 @@ export const playhubScreens={
   typography:{src:typography,label:copy("Guia de tipografia e espaçamento","Typography and spacing guide")},
 };
 export type PlayhubScreen=typeof playhubScreens[keyof typeof playhubScreens];
-export const playhubJourney=[
-  {title:copy("Descobrir","Discover"),question:copy("Onde vamos jogar?","Where shall we play?"),body:copy("Busca e categorias aproximam a escolha da modalidade. Fotos, localização e valor por hora ajudam a comparar as opções antes de abrir uma arena.","Search and categories bring the sport into focus. Photos, location and hourly pricing help people compare options before opening an arena."),why:copy("Dar contexto antes de pedir uma decisão.","Provide context before asking for a decision."),screen:playhubScreens.home},
-  {title:copy("Conhecer","Explore"),question:copy("Essa quadra faz sentido?","Is this the right court?"),body:copy("A página da arena reúne fotos, endereço, estrutura, horário de funcionamento e avaliações. A informação essencial acompanha a escolha.","The arena page brings together photos, address, amenities, opening hours and reviews. Essential information stays close to the decision."),why:copy("Reunir os critérios de escolha em um só lugar.","Bring the selection criteria into one place."),screen:playhubScreens.details},
-  {title:copy("Agendar","Schedule"),question:copy("Qual data e horário?","Which date and time?"),body:copy("Data, horário e arena aparecem em seletores visuais. Estados distintos para opções disponíveis, indisponíveis e selecionadas deixam a escolha mais explícita.","Date, time and court use visual selectors. Distinct available, unavailable and selected states make the choice more explicit."),why:copy("Mostrar disponibilidade, em vez de exigir uma conversa para descobri-la.","Show availability instead of requiring a conversation to discover it."),screen:playhubScreens.booking},
-  {title:copy("Revisar","Review"),question:copy("O que estou reservando?","What am I booking?"),body:copy("O resumo apresenta subtotal, cupom e total, junto da escolha de pagamento. A revisão cria um ponto de conferência antes de avançar.","The summary presents subtotal, discount and total alongside payment selection. Review creates a checkpoint before moving forward."),why:copy("Deixar o compromisso e o valor visíveis antes de confirmar.","Make the commitment and price visible before confirmation."),screen:playhubScreens.payment},
-  {title:copy("Acompanhar","Track"),question:copy("Quando é o próximo jogo?","When is the next game?"),body:copy("Uma agenda organiza as reservas por data. O mesmo produto também contempla o lado de quem administra o espaço esportivo.","A calendar organizes reservations by date. The product also includes the perspective of the people managing the sports venue."),why:copy("Continuar a experiência depois da reserva.","Continue the experience after booking."),screen:playhubScreens.calendar},
-];
 export const playhubProcess=[
   {label:copy("Planejar","Plan"),title:copy("Uma pergunta guia o produto.","One question guides the product."),body:copy("Como conectar quem quer jogar a uma quadra disponível, sem espalhar a decisão entre busca, mensagens e uma agenda separada? Esse é o problema de partida apresentado neste case.","How can someone find an available court without spreading the decision across search, messages and a separate calendar? This is the starting problem framed in this case."),decision:copy("Dois lados, uma jornada: praticantes escolhem e reservam; gestores acompanham a operação.","Two sides, one journey: players choose and book; managers oversee operations."),outputs:[copy("Problema de produto","Product problem"),copy("Perfis de uso","User roles"),copy("Escopo do agendamento","Booking scope")],screen:playhubScreens.home},
   {label:copy("Estruturar","Structure"),title:copy("Organizar antes de decorar.","Structure before decoration."),body:copy("O arquivo documenta entrada, cadastro, recuperação de acesso, pesquisa de lugares, detalhes, pagamento e acompanhamento. A reserva é o eixo que conecta essas rotas.","The file documents onboarding, registration, account recovery, search, details, payment and tracking. Booking is the axis connecting these routes."),decision:copy("Separar descoberta, seleção e revisão para que cada tela responda a uma pergunta.","Separate discovery, selection and review so each screen answers one question."),outputs:[copy("Fluxo de navegação","Navigation flow"),copy("Hierarquia da informação","Information hierarchy")],screen:playhubScreens.guide},

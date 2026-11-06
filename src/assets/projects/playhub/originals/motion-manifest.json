@@ -1,0 +1,86 @@
+{
+  "fileKey": "v8y0LZqC6qd7iCCemVLFnF",
+  "width": 393,
+  "height": 852,
+  "hold": 1800,
+  "transitionDuration": 480,
+  "policy": "Only original exported screens. No redrawn UI, added messages, cursors, or invented states.",
+  "flows": {
+    "onboarding": [
+      {
+        "id": 40,
+        "file": "screen-40.png",
+        "sha256": "141da60a251b81f0b4f85cce9eb82e1af5060cc849c3568851c15982c1ef5ccd"
+      },
+      {
+        "id": 41,
+        "file": "screen-41.png",
+        "sha256": "50c54efa12344bd26b0985336d84a0d38bcf589618919bf115d9f164fa4504ca"
+      },
+      {
+        "id": 36,
+        "file": "screen-36.png",
+        "sha256": "ec4ee315d9d21b3c34a3fcc9a0514b4ecd17c02baeafd08c3cb35bd2ba9f5130"
+      },
+      {
+        "id": 29,
+        "file": "screen-29.png",
+        "sha256": "b2477a30631e20af53ed074a30cf36dee28dc5532b4ac033fccaca4f60a6b425"
+      }
+    ],
+    "booking": [
+      {
+        "id": 38,
+        "file": "screen-38.png",
+        "sha256": "5ac0ccb9906b77e09ea826fff47a528bcd116be84944176721654d3b936bc2e2"
+      },
+      {
+        "id": 13,
+        "file": "screen-13.png",
+        "sha256": "696e88ee7f09b55c3047d3c198a714d23e17d82b1f75b6e3f19811391a91c4b5"
+      },
+      {
+        "id": 12,
+        "file": "screen-12.png",
+        "sha256": "28f1d1733daade23e1d94c14456af3d3f742a1a4baadc240338b4e740c5000fe"
+      },
+      {
+        "id": 18,
+        "file": "screen-18.png",
+        "sha256": "f3b3a012e1d9a06a523cb6b641ad36b96ea5194d0946d3e1bc382e65d69f1a1c"
+      },
+      {
+        "id": 19,
+        "file": "screen-19.png",
+        "sha256": "b5133d7e84907e7890191fb54abd6ead48623ac91be397121914b40008af0f78"
+      },
+      {
+        "id": 39,
+        "file": "screen-39.png",
+        "sha256": "c57a20c46fd621c3e2605799b54143c40bc01c11e5d84be1ddbc4be5e335df37"
+      }
+    ],
+    "payment": [
+      {
+        "id": 18,
+        "file": "screen-18.png",
+        "sha256": "f3b3a012e1d9a06a523cb6b641ad36b96ea5194d0946d3e1bc382e65d69f1a1c"
+      },
+      {
+        "id": 19,
+        "file": "screen-19.png",
+        "sha256": "b5133d7e84907e7890191fb54abd6ead48623ac91be397121914b40008af0f78"
+      },
+      {
+        "id": 20,
+        "file": "screen-20.png",
+        "sha256": "9a05f67fc53c9faf2958b63fdd3a2ece65e24a1b76a08dc605691630e4df6bd6"
+      },
+      {
+        "id": 21,
+        "file": "screen-21.png",
+        "sha256": "e08b31e5e9edb979e31c0c7c895a0c4b0b517d64724a07a6e4e15c667d3fe5fe"
+      }
+    ]
+  }
+}

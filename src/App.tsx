@@ -4,15 +4,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/commun/Navbar";
 import Footer from "./components/commun/Footer";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
 import ClickPop from "./components/commun/ClickPop";
 import MusicPlayer from "./components/commun/MusicPlayer";
 import ScrollCue from "./components/commun/ScrollCue";
 import ConnectionGuard from "./components/ConnectionGuard";
 import PageStatus from "./pages/PageStatus";
 
+const About=lazy(()=>import("./pages/About"));
+const Projects=lazy(()=>import("./pages/Projects"));
+const Contact=lazy(()=>import("./pages/Contact"));
 const Portfolio=lazy(()=>import("./pages/Portfolio"));
 const Playhub=lazy(()=>import("./pages/Playhub"));
 const Rachaqui=lazy(()=>import("./pages/Rachaqui"));
